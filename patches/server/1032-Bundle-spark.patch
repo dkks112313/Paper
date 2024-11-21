@@ -5,7 +5,7 @@ Subject: [PATCH] Bundle spark
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index a0f086ec054c456067ee07bf3c7685e2b9458d72..2ed184ccaa963ba1ea007628d2472f31c053be98 100644
+index 267758ecfcf191fb8a8c32a2e9a6544145f91904..8cbf448c6d3f14f6acd901dc9c0cd94787eb0b58 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -62,6 +62,10 @@ dependencies {
@@ -14,7 +14,7 @@ index a0f086ec054c456067ee07bf3c7685e2b9458d72..2ed184ccaa963ba1ea007628d2472f31
      // Paper end - Remap reflection
 +    // Paper start - spark
 +    implementation("me.lucko:spark-api:0.1-20240720.200737-2")
-+    implementation("me.lucko:spark-paper:1.10.105-SNAPSHOT")
++    implementation("me.lucko:spark-paper:1.10.119-SNAPSHOT")
 +    // Paper end - spark
  }
  
