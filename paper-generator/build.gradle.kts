@@ -103,6 +103,7 @@ fun TaskContainer.registerGenerationTask(
     val projectDirs = args.mapNotNull { project.rootProject.findProject(it)?.projectDir }
     if (projectDirs.isNotEmpty()) {
         args(projectDirs)
+        systemProperty("paper.updatingMinecraft", providers.gradleProperty("updatingMinecraft").getOrElse("false").toBoolean())
         if (rewrite) {
             systemProperty("typewriter.lexer.ignoreMarkdownDocComments", true)
             inputs.files(projectDirs.map { it.resolve("src/main/java") })

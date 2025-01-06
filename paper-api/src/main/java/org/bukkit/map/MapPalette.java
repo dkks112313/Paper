@@ -443,7 +443,7 @@ public final class MapPalette {
             }
         }
 
-        // Minecraft has 143 colors, some of which have negative byte representations
+        // Minecraft has 248 colors, some of which have negative byte representations
         return (byte) (index < 128 ? index : -129 + (index - 127));
     }
 
@@ -457,7 +457,7 @@ public final class MapPalette {
     @Deprecated(since = "1.6.2", forRemoval = true) // Paper
     @NotNull
     public static Color getColor(byte index) {
-        // Minecraft has 143 colors, some of which have negative byte representations
+        // Minecraft has 248 colors, some of which have negative byte representations
         return colors[index >= 0 ? index : index + 256];
     }
 

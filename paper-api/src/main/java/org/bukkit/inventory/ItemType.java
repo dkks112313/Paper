@@ -3041,7 +3041,7 @@ public interface ItemType extends Keyed, Translatable, net.kyori.adventure.trans
      * Get the {@link CreativeCategory} to which this item type belongs.
      *
      * @return the creative category. null if does not belong to a category
-     * @deprecated creative categories no longer exist on the server
+     <!-- * @deprecated use #getCreativeCategories() -->
      */
     @Nullable
     @Deprecated(since = "1.20.6")
