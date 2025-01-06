@@ -3,6 +3,7 @@ package com.destroystokyo.paper.entity.ai;
 import com.destroystokyo.paper.entity.RangedEntity;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import io.papermc.paper.entity.SchoolableFish;
 import io.papermc.paper.util.ObfHelper;
 import java.lang.reflect.Constructor;
 import java.util.EnumSet;
@@ -33,6 +34,9 @@ public class MobGoalHelper {
         ignored.add("selector_2");
         ignored.add("wrapped");
 
+        //<editor-fold defaultstate="collapsed" desc="bukkitMap Entities">
+        // Paper start - Generated/MobGoalHelper#bukkitMap
+        // @GeneratedFrom 1.21.4
         bukkitMap.put(net.minecraft.world.entity.Mob.class, Mob.class);
         bukkitMap.put(net.minecraft.world.entity.AgeableMob.class, Ageable.class);
         bukkitMap.put(net.minecraft.world.entity.ambient.AmbientCreature.class, Ambient.class);
@@ -54,7 +58,7 @@ public class MobGoalHelper {
         bukkitMap.put(net.minecraft.world.entity.monster.Endermite.class, Endermite.class);
         bukkitMap.put(net.minecraft.world.entity.monster.Evoker.class, Evoker.class);
         bukkitMap.put(net.minecraft.world.entity.animal.AbstractFish.class, Fish.class);
-        bukkitMap.put(net.minecraft.world.entity.animal.AbstractSchoolingFish.class, io.papermc.paper.entity.SchoolableFish.class);
+        bukkitMap.put(net.minecraft.world.entity.animal.AbstractSchoolingFish.class, SchoolableFish.class);
         bukkitMap.put(net.minecraft.world.entity.FlyingMob.class, Flying.class);
         bukkitMap.put(net.minecraft.world.entity.animal.Fox.class, Fox.class);
         bukkitMap.put(net.minecraft.world.entity.monster.Ghast.class, Ghast.class);
@@ -69,7 +73,7 @@ public class MobGoalHelper {
         bukkitMap.put(net.minecraft.world.entity.animal.horse.Mule.class, Mule.class);
         bukkitMap.put(net.minecraft.world.entity.animal.horse.SkeletonHorse.class, SkeletonHorse.class);
         bukkitMap.put(net.minecraft.world.entity.animal.horse.ZombieHorse.class, ZombieHorse.class);
-        bukkitMap.put(net.minecraft.world.entity.animal.camel.Camel.class, org.bukkit.entity.Camel.class);
+        bukkitMap.put(net.minecraft.world.entity.animal.camel.Camel.class, Camel.class);
         bukkitMap.put(net.minecraft.world.entity.monster.AbstractIllager.class, Illager.class);
         bukkitMap.put(net.minecraft.world.entity.monster.Illusioner.class, Illusioner.class);
         bukkitMap.put(net.minecraft.world.entity.monster.SpellcasterIllager.class, Spellcaster.class);
@@ -78,12 +82,12 @@ public class MobGoalHelper {
         bukkitMap.put(net.minecraft.world.entity.animal.horse.TraderLlama.class, TraderLlama.class);
         bukkitMap.put(net.minecraft.world.entity.monster.MagmaCube.class, MagmaCube.class);
         bukkitMap.put(net.minecraft.world.entity.monster.Monster.class, Monster.class);
-        bukkitMap.put(net.minecraft.world.entity.monster.PatrollingMonster.class, Raider.class); // close enough
+        bukkitMap.put(net.minecraft.world.entity.monster.PatrollingMonster.class, Raider.class);
         bukkitMap.put(net.minecraft.world.entity.animal.MushroomCow.class, MushroomCow.class);
         bukkitMap.put(net.minecraft.world.entity.animal.Ocelot.class, Ocelot.class);
         bukkitMap.put(net.minecraft.world.entity.animal.Panda.class, Panda.class);
         bukkitMap.put(net.minecraft.world.entity.animal.Parrot.class, Parrot.class);
-        bukkitMap.put(net.minecraft.world.entity.animal.ShoulderRidingEntity.class, Parrot.class); // close enough
+        bukkitMap.put(net.minecraft.world.entity.animal.ShoulderRidingEntity.class, Parrot.class);
         bukkitMap.put(net.minecraft.world.entity.monster.Phantom.class, Phantom.class);
         bukkitMap.put(net.minecraft.world.entity.animal.Pig.class, Pig.class);
         bukkitMap.put(net.minecraft.world.entity.monster.ZombifiedPiglin.class, PigZombie.class);
@@ -138,7 +142,9 @@ public class MobGoalHelper {
         bukkitMap.put(net.minecraft.world.entity.animal.armadillo.Armadillo.class, Armadillo.class);
         bukkitMap.put(net.minecraft.world.entity.monster.Bogged.class, Bogged.class);
         bukkitMap.put(net.minecraft.world.entity.monster.creaking.Creaking.class, Creaking.class);
-        bukkitMap.put(net.minecraft.world.entity.animal.AgeableWaterCreature.class, Squid.class); // close enough
+        bukkitMap.put(net.minecraft.world.entity.animal.AgeableWaterCreature.class, Squid.class);
+        // Paper end - Generated/MobGoalHelper#bukkitMap
+        //</editor-fold>
     }
 
     public static String getUsableName(Class<?> clazz) {
@@ -157,7 +163,6 @@ public class MobGoalHelper {
                 name = cut;
             }
         }
-        name = name.replace("PathfinderGoal", "");
         name = name.replace("TargetGoal", "");
         name = name.replace("Goal", "");
         StringBuilder sb = new StringBuilder();

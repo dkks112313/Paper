@@ -22,6 +22,7 @@ import io.papermc.generator.rewriter.types.registry.PaperFeatureFlagMapping;
 import io.papermc.generator.rewriter.types.simple.StatisticRewriter;
 import io.papermc.generator.rewriter.types.simple.trial.DataComponentTypesRewriter;
 import io.papermc.generator.rewriter.types.simple.trial.VillagerProfessionRewriter;
+import io.papermc.generator.types.goal.MobGoalNames;
 import io.papermc.generator.utils.Formatting;
 import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.datacomponent.item.consumable.ItemUseAnimation;
@@ -29,11 +30,14 @@ import io.papermc.typewriter.preset.EnumCloneRewriter;
 import io.papermc.typewriter.preset.model.EnumValue;
 import java.util.Map;
 import java.util.function.Consumer;
+import io.papermc.typewriter.replace.SearchMetadata;
+import io.papermc.typewriter.replace.SearchReplaceRewriter;
 import javax.lang.model.SourceVersion;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.Rarity;
 import org.bukkit.Art;
 import org.bukkit.FeatureFlag;
@@ -209,7 +213,18 @@ public final class Rewriters {
                 holder("CraftPotionUtil#upgradeable", new CraftPotionUtilRewriter("strong")),
                 holder("CraftPotionUtil#extendable", new CraftPotionUtilRewriter("long"))
             ))
-            .register("PaperFeatureFlagProviderImpl#FLAGS", Types.PAPER_FEATURE_FLAG_PROVIDER_IMPL, new PaperFeatureFlagMapping());
+            .register("PaperFeatureFlagProviderImpl#FLAGS", Types.PAPER_FEATURE_FLAG_PROVIDER_IMPL, new PaperFeatureFlagMapping())
+            .register("MobGoalHelper#bukkitMap", Types.MOB_GOAL_HELPER, new SearchReplaceRewriter() {
+                @Override
+                protected void insert(SearchMetadata metadata, StringBuilder builder) {
+                    for (Map.Entry<Class<? extends Mob>, Class<? extends org.bukkit.entity.Mob>> entry : MobGoalNames.bukkitMap.entrySet()) {
+                        builder.append(metadata.indent()).append("bukkitMap.put(%s.class, %s.class);".formatted(
+                            entry.getKey().getCanonicalName(), this.importCollector.getShortName(entry.getValue())
+                        ));
+                        builder.append('\n');
+                    }
+                }
+            });
         RegistryBootstrapper.bootstrapServer(sourceSet);
     }
 }

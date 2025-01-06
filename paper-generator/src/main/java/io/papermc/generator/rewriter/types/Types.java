@@ -23,4 +23,6 @@ public final class Types {
     public static final ClassNamed PAPER_FEATURE_FLAG_PROVIDER_IMPL = ClassNamed.of("io.papermc.paper.world.flag", "PaperFeatureFlagProviderImpl");
 
     public static final ClassNamed PAPER_SIMPLE_REGISTRY = ClassNamed.of("io.papermc.paper.registry", "PaperSimpleRegistry");
+
+    public static final ClassNamed MOB_GOAL_HELPER = ClassNamed.of("com.destroystokyo.paper.entity.ai", "MobGoalHelper");
 }

@@ -7,6 +7,7 @@ import io.papermc.generator.utils.Formatting;
 import io.papermc.paper.entity.SchoolableFish;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
@@ -19,7 +20,7 @@ import org.jspecify.annotations.NullMarked;
 public final class MobGoalNames { // todo sync with MobGoalHelper ideally this should not be duplicated
 
     private static final Map<Class<? extends Goal>, Class<? extends Mob>> entityClassCache = new HashMap<>();
-    public static final Map<Class<? extends net.minecraft.world.entity.Mob>, Class<? extends Mob>> bukkitMap = new HashMap<>();
+    public static final Map<Class<? extends net.minecraft.world.entity.Mob>, Class<? extends Mob>> bukkitMap = new LinkedHashMap<>();
 
     static {
         //<editor-fold defaultstate="collapsed" desc="bukkitMap Entities">
