@@ -19,9 +19,9 @@ public class MapPaletteRewriter extends SearchReplaceRewriter {
                 builder.append(metadata.indent());
                 Color color = new Color(mapColor.calculateARGBColor(brightness), true);
                 if (color.getAlpha() != 0xFF) {
-                    builder.append("new %s(%d, %d, %d, %d),".formatted(color.getClass().getSimpleName(), color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()));
+                    builder.append("new %s(0x%08X, true),".formatted(color.getClass().getSimpleName(), color.getRGB()));
                 } else {
-                    builder.append("new %s(%d, %d, %d),".formatted(color.getClass().getSimpleName(), color.getRed(), color.getGreen(), color.getBlue()));
+                    builder.append("new %s(0x%06X),".formatted(color.getClass().getSimpleName(), color.getRGB() & 0x00FFFFFF));
                 }
                 builder.append('\n');
             }

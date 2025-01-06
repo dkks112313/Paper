@@ -255,7 +255,7 @@ public class MobGoalHelper {
                     }
                 }
             }
-            throw new RuntimeException("Can't figure out applicable entity for mob goal " + goalClass); // maybe just return EntityInsentient?
+            throw new RuntimeException("Can't figure out applicable entity for mob goal " + goalClass); // maybe just return Mob?
         });
     }
 

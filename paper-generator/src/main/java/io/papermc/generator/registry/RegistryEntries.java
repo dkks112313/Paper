@@ -100,6 +100,7 @@ public final class RegistryEntries {
         return new RegistryEntry<>(registryKey, registryKeyField, holderElementsClass, apiClass, implName);
     }
 
+    @Deprecated
     private static <T> RegistryEntry<T> inconsistentEntry(ResourceKey<? extends Registry<T>> registryKey, Class<?> holderElementsClass, Class<? extends Keyed> apiClass, String implClass) {
         return new RegistryEntry<>(registryKey, (RegistryKeyField<T>) REGISTRY_KEY_FIELDS.get(registryKey), holderElementsClass, apiClass, implClass);
     }
@@ -130,7 +131,6 @@ public final class RegistryEntries {
         BlockType.class,
         ItemType.class
     );
-    // // Paper start - Generated/DataComponentTypes
 
     public static final List<RegistryEntry<?>> BUILT_IN = List.of(
         entry(Registries.GAME_EVENT, net.minecraft.world.level.gameevent.GameEvent.class, GameEvent.class).apiRegistryBuilder(GameEventRegistryEntry.Builder.class, "PaperGameEventRegistryEntry.PaperBuilder"),
@@ -157,7 +157,7 @@ public final class RegistryEntries {
         entry(Registries.TRIM_PATTERN, TrimPatterns.class, TrimPattern.class).delayed(),
         entry(Registries.DAMAGE_TYPE, DamageTypes.class, DamageType.class).apiRegistryBuilder(DamageTypeRegistryEntry.Builder.class, "PaperDamageTypeRegistryEntry.PaperBuilder").delayed(),
         entry(Registries.WOLF_VARIANT, WolfVariants.class, Wolf.Variant.class).delayed(),
-        entry(Registries.ENCHANTMENT, Enchantments.class, Enchantment.class).apiRegistryBuilder(EnchantmentRegistryEntry.Builder.class, "PaperEnchantmentRegistryEntry.PaperBuilder").withSerializationUpdater("ENCHANTMENT_RENAME").delayed(),
+        entry(Registries.ENCHANTMENT, Enchantments.class, Enchantment.class).apiRegistryBuilder(EnchantmentRegistryEntry.Builder.class, "PaperEnchantmentRegistryEntry.PaperBuilder").serializationUpdater("ENCHANTMENT_RENAME").delayed(),
         entry(Registries.JUKEBOX_SONG, JukeboxSongs.class, JukeboxSong.class).delayed(),
         entry(Registries.BANNER_PATTERN, BannerPatterns.class, PatternType.class).apiRegistryBuilder(BannerPatternRegistryEntry.Builder.class, "PaperBannerPatternRegistryEntry.PaperBuilder").delayed(),
         entry(Registries.PAINTING_VARIANT, PaintingVariants.class, Art.class).apiRegistryBuilder(PaintingVariantRegistryEntry.Builder.class, "PaperPaintingVariantRegistryEntry.PaperBuilder").apiRegistryField("ART").delayed(),

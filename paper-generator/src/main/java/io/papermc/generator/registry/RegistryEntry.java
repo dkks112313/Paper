@@ -88,7 +88,7 @@ public final class RegistryEntry<T> {
         return this;
     }
 
-    public RegistryEntry<T> withSerializationUpdater(String fieldName) {
+    public RegistryEntry<T> serializationUpdater(String fieldName) {
         this.fieldRename = fieldName;
         return this;
     }

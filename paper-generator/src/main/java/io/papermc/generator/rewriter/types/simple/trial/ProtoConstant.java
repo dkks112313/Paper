@@ -3,21 +3,21 @@ package io.papermc.generator.rewriter.types.simple.trial;
 import io.papermc.typewriter.parser.token.CharSequenceBlockToken;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 
-class ConstantInfo {
+class ProtoConstant {
 
-    private @MonotonicNonNull String constantName;
+    private @MonotonicNonNull String name;
     private @MonotonicNonNull CharSequenceBlockToken token;
 
-    public void constantName(String name) {
-        this.constantName = name;
+    public void name(String name) {
+        this.name = name;
     }
 
     public void javadocs(CharSequenceBlockToken token) {
         this.token = token;
     }
 
-    public String constantName() {
-        return this.constantName;
+    public String name() {
+        return this.name;
     }
 
     public CharSequenceBlockToken javadocs() {
@@ -25,6 +25,6 @@ class ConstantInfo {
     }
 
     public boolean isComplete() {
-        return this.constantName != null && this.token != null;
+        return this.name != null && this.token != null;
     }
 }

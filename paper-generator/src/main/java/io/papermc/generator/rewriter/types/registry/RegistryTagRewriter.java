@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import org.bukkit.Keyed;
 import org.bukkit.Tag;
+import org.jetbrains.annotations.ApiStatus;
 import org.jspecify.annotations.NullMarked;
 import org.slf4j.Logger;
 
@@ -24,6 +25,7 @@ import static javax.lang.model.element.Modifier.PUBLIC;
 import static javax.lang.model.element.Modifier.STATIC;
 
 @NullMarked
+@ApiStatus.Obsolete
 public class RegistryTagRewriter<T> extends SearchReplaceRewriter {
 
     private static final Logger LOGGER = LogUtils.getLogger();

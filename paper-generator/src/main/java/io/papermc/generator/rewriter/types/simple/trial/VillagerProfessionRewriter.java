@@ -37,20 +37,20 @@ public class VillagerProfessionRewriter extends RegistryFieldRewriter<VillagerPr
         Lexer lex = new Lexer(content.toCharArray());
         SequenceTokens.wrap(lex, FORMAT_TOKENS)
             .group(action -> {
-                ConstantInfo info = new ConstantInfo();
+                ProtoConstant constant = new ProtoConstant();
                 action
                     .map(TokenType.JAVADOC, token -> {
-                        info.javadocs(((CharSequenceBlockToken) token));
+                        constant.javadocs(((CharSequenceBlockToken) token));
                     }, TokenTaskBuilder::asOptional)
                     .skipQualifiedName(Predicate.isEqual(TokenType.JAVADOC))
                     .map(TokenType.IDENTIFIER, token -> {
-                        info.constantName(((CharSequenceToken) token).value());
+                        constant.name(((CharSequenceToken) token).value());
                     })
                     .skip(TokenType.IDENTIFIER)
                     .skipClosure(TokenType.LPAREN, TokenType.RPAREN, true)
                     .map(TokenType.SECO, $ -> {
-                        if (info.isComplete()) {
-                            map.put(info.constantName(), info.javadocs());
+                        if (constant.isComplete()) {
+                            map.put(constant.name(), constant.javadocs());
                         }
                     });
             }, TokenTaskBuilder::asRepeatable)
@@ -60,20 +60,20 @@ public class VillagerProfessionRewriter extends RegistryFieldRewriter<VillagerPr
         Set<TokenType> endMarkers = Set.of(TokenType.CO, TokenType.SECO); // move to static
         SequenceTokens.wrap(lex, FORMAT_TOKENS)
             .group(action -> {
-                ConstantInfo info = new ConstantInfo();
+                ProtoConstant constant = new ProtoConstant();
                 action
                     .map(TokenType.JAVADOC, token -> {
-                        info.javadocs(((CharSequenceBlockToken) token).value());
+                        constant.javadocs(((CharSequenceBlockToken) token).value());
                     }, TokenTaskBuilder::asOptional)
                     .map(TokenType.IDENTIFIER, token -> {
-                        info.constantName(((CharSequenceToken) token).value());
+                        constant.name(((CharSequenceToken) token).value());
                     })
                     .skipClosure(TokenType.LPAREN, TokenType.RPAREN, true)
                     .skipClosure(TokenType.LSCOPE, TokenType.RSCOPE, true)
                     .map(endMarkers::contains, $ -> {
                         // this part will probably fail for the last entry for enum without end (,;)
-                        if (info.isComplete()) {
-                            map.put(info.constantName(), info.javadocs());
+                        if (constant.isComplete()) {
+                            map.put(constant.name(), constant.javadocs());
                         }
                     });
             }, TokenTaskBuilder::asRepeatable)

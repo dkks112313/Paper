@@ -73,22 +73,22 @@ public class DataComponentTypesRewriter extends RegistryFieldRewriter<DataCompon
         Lexer lex = new Lexer(content.toCharArray());
         SequenceTokens.wrap(lex, FORMAT_TOKENS)
             .group(action -> {
-                ConstantInfo info = new ConstantInfo();
+                ProtoConstant constant = new ProtoConstant();
                 action
                     .map(TokenType.JAVADOC, token -> {
-                        info.javadocs(((CharSequenceBlockToken) token));
+                        constant.javadocs(((CharSequenceBlockToken) token));
                     }, TokenTaskBuilder::asOptional)
                     .skip(TokenType.PUBLIC).skip(TokenType.STATIC).skip(TokenType.FINAL)
                     .skipQualifiedName(Predicate.isEqual(TokenType.JAVADOC))
                     .skipClosure(TokenType.LT, TokenType.GT, true, TokenTaskBuilder::asOptional) // skip generic
                     .map(TokenType.IDENTIFIER, token -> {
-                        info.constantName(((CharSequenceToken) token).value());
+                        constant.name(((CharSequenceToken) token).value());
                     })
                     .skip(TokenType.IDENTIFIER)
                     .skipClosure(TokenType.LPAREN, TokenType.RPAREN, true)
                     .map(TokenType.SECO, $ -> {
-                        if (info.isComplete()) {
-                            map.put(info.constantName(), info.javadocs());
+                        if (constant.isComplete()) {
+                            map.put(constant.name(), constant.javadocs());
                         }
                     });
             }, TokenTaskBuilder::asRepeatable)
