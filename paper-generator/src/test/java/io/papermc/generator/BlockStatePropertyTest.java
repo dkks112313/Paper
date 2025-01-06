@@ -10,6 +10,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import io.papermc.generator.utils.ClassHelper;
 import net.minecraft.SharedConstants;
 import net.minecraft.server.Bootstrap;
 import net.minecraft.world.level.block.ChiseledBookShelfBlock;
@@ -36,14 +37,12 @@ public class BlockStatePropertyTest {
         Set<Class<? extends Comparable<?>>> enumPropertyValues = Collections.newSetFromMap(new IdentityHashMap<>());
         try {
             for (Field field : BlockStateProperties.class.getDeclaredFields()) {
-                int mod = field.getModifiers();
-                if (Modifier.isStatic(mod) & Modifier.isFinal(mod) & Modifier.isPublic(mod)) {
+                if (ClassHelper.isStaticConstant(field, Modifier.PUBLIC)) {
                     if (!EnumProperty.class.isAssignableFrom(field.getType())) {
                         continue;
                     }
 
-                    EnumProperty<?> property = ((EnumProperty<?>) field.get(null));
-                    enumPropertyValues.add(property.getValueClass());
+                    enumPropertyValues.add(((EnumProperty<?>) field.get(null)).getValueClass());
                 }
             }
             ENUM_PROPERTY_VALUES = Collections.unmodifiableSet(enumPropertyValues);

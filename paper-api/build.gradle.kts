@@ -93,16 +93,16 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-val generatedApiDir: java.nio.file.Path = rootProject.projectDir.toPath().resolve("paper-generator/generatedApi")
+val generatedDir: java.nio.file.Path = projectDir.toPath().resolve("src/main/generated")
 idea {
     module {
-        generatedSourceDirs.add(generatedApiDir.toFile())
+        generatedSourceDirs.add(generatedDir.toFile())
     }
 }
 sourceSets {
     main {
         java {
-            srcDir(generatedApiDir)
+            srcDir(generatedDir)
         }
     }
 }

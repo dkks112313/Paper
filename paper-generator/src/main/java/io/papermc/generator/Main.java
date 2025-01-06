@@ -9,7 +9,6 @@ import io.papermc.generator.utils.experimental.ExperimentalCollector;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -78,14 +77,16 @@ public final class Main {
         PatternSourceSetRewriter serverSourceSet = new PaperPatternSourceSetRewriter();
         Rewriters.bootstrap(apiSourceSet, serverSourceSet);
 
+        Path api = Path.of(args[0]);
+        Path server = Path.of(args[1]);
         try {
             LOGGER.info("Running API generators...");
-            generate(Path.of(args[0]), Generators.API);
-            apiSourceSet.apply(Path.of(args[2]));
+            generate(api, Generators.API);
+            apiSourceSet.apply(api.resolve("src/main/java"));
 
             LOGGER.info("Running Server generators...");
-            generate(Path.of(args[1]), Generators.SERVER);
-            serverSourceSet.apply(Path.of(args[3]));
+            generate(server, Generators.SERVER);
+            serverSourceSet.apply(server.resolve("src/main/java"));
         } catch (RuntimeException ex) {
             throw ex;
         } catch (Exception e) {
@@ -93,7 +94,8 @@ public final class Main {
         }
     }
 
-    private static void generate(Path output, Collection<SourceGenerator> generators) throws IOException {
+    private static void generate(Path sourceSet, Collection<SourceGenerator> generators) throws IOException {
+        Path output = sourceSet.resolve("src/main/generated");
         if (Files.exists(output)) {
             PathUtils.deleteDirectory(output);
         }

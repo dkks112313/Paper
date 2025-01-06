@@ -254,16 +254,16 @@ tasks.test {
     jvmArgumentProviders.add(provider)
 }
 
-val generatedServerDir: java.nio.file.Path = rootProject.projectDir.toPath().resolve("paper-generator/generatedServer")
+val generatedDir: java.nio.file.Path = projectDir.toPath().resolve("src/main/generated")
 idea {
     module {
-        generatedSourceDirs.add(generatedServerDir.toFile())
+        generatedSourceDirs.add(generatedDir.toFile())
     }
 }
 sourceSets {
     main {
         java {
-            srcDir(generatedServerDir)
+            srcDir(generatedDir)
         }
     }
 }

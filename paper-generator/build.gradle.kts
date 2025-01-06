@@ -28,29 +28,29 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-val generatedApiPath = layout.projectDirectory.dir("generatedApi")
-val generatedServerPath = layout.projectDirectory.dir("generatedServer")
-
-tasks.register<JavaExec>("generate") {
-    group = "generation"
+tasks.registerGenerationTask("generate") {
+    description = "Generate and rewrite boilerplate content of API and its implementation"
     dependsOn(tasks.check)
     mainClass.set("io.papermc.generator.Main")
     classpath(sourceSets.main.map { it.runtimeClasspath })
     systemProperty("typewriter.lexer.ignoreMarkdownDocComments", true)
-    args(generatedApiPath.toString(),
-        generatedServerPath.toString(),
-        project(":paper-api").sourceSets["main"].java.srcDirs.first().toString(),
-        project(":paper-server").sourceSets["main"].java.srcDirs.first().toString())
-    javaLauncher = javaToolchains.defaultJavaLauncher(project)
 }
 
-tasks.register<JavaExec>("scanOldGeneratedSourceCode") {
-    group = "generation"
+tasks.registerGenerationTask("scanOldGeneratedSourceCode") {
+    description = "Scan source code to detect outdated generated code"
     mainClass.set("io.papermc.generator.rewriter.OldGeneratedCodeTest")
     classpath(sourceSets.test.map { it.runtimeClasspath })
-    args(project(":paper-api").sourceSets["main"].java.srcDirs.first().toString(),
-        project(":paper-server").sourceSets["main"].java.srcDirs.first().toString())
-    javaLauncher = javaToolchains.defaultJavaLauncher(project)
+}
+
+fun TaskContainer.registerGenerationTask(
+    name: String,
+    block: JavaExec.() -> Unit
+): TaskProvider<JavaExec> = register<JavaExec>(name) {
+    group = "generation"
+    javaLauncher = project.javaToolchains.defaultJavaLauncher(project)
+    args(project(":paper-api").projectDir.toString(), project(":paper-server").projectDir.toString())
+
+    block(this)
 }
 
 tasks.test {
