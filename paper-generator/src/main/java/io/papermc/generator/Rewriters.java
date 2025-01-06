@@ -28,6 +28,7 @@ import io.papermc.paper.datacomponent.item.consumable.ItemUseAnimation;
 import io.papermc.typewriter.preset.EnumCloneRewriter;
 import io.papermc.typewriter.preset.model.EnumValue;
 import java.util.Map;
+import java.util.function.Consumer;
 import javax.lang.model.SourceVersion;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minecraft.core.Holder;
@@ -84,7 +85,15 @@ import static io.papermc.generator.utils.Formatting.quoted;
 public final class Rewriters {
 
     public static void bootstrap(PatternSourceSetRewriter apiSourceSet, PatternSourceSetRewriter serverSourceSet) {
-        apiSourceSet
+        bootstrapApi(apiSourceSet);
+        bootstrapServer(serverSourceSet);
+    }
+
+    public static final Consumer<PatternSourceSetRewriter> API = Rewriters::bootstrapApi;
+    public static final Consumer<PatternSourceSetRewriter> SERVER = Rewriters::bootstrapServer;
+
+    private static void bootstrapApi(PatternSourceSetRewriter sourceSet) {
+        sourceSet
             .register("PotionType", PotionType.class, new EnumRegistryRewriter<>(Registries.POTION))
             .register("EntityType", EntityType.class, new EntityTypeRewriter())
             .register("DisplaySlot", DisplaySlot.class, new EnumCloneRewriter<>(net.minecraft.world.scores.DisplaySlot.class) {
@@ -185,8 +194,11 @@ public final class Rewriters {
             .register("FeatureFlag", FeatureFlag.class, new FeatureFlagRewriter())
             .register("Tag", Tag.class, new TagRewriter())
             .register("MapPalette#colors", MapPalette.class, new MapPaletteRewriter());
+        RegistryBootstrapper.bootstrapApi(sourceSet);
+    }
 
-        serverSourceSet
+    private static void bootstrapServer(PatternSourceSetRewriter sourceSet) {
+        sourceSet
             .register("CraftBlockData#MAP", Types.CRAFT_BLOCK_DATA, new CraftBlockDataMapping())
             .register("CraftBlockEntityStates", Types.CRAFT_BLOCK_STATES, new CraftBlockEntityStateMapping())
             .register(Types.CRAFT_STATISTIC, composite(
@@ -198,6 +210,6 @@ public final class Rewriters {
                 holder("CraftPotionUtil#extendable", new CraftPotionUtilRewriter("long"))
             ))
             .register("PaperFeatureFlagProviderImpl#FLAGS", Types.PAPER_FEATURE_FLAG_PROVIDER_IMPL, new PaperFeatureFlagMapping());
-        RegistryBootstrapper.bootstrap(apiSourceSet, serverSourceSet);
+        RegistryBootstrapper.bootstrapServer(sourceSet);
     }
 }

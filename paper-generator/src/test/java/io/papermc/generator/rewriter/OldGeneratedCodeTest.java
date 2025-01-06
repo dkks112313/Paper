@@ -40,8 +40,8 @@ public class OldGeneratedCodeTest {
 
         Rewriters.bootstrap(apiSourceSet, serverSourceSet);
 
-        checkOutdated(apiSourceSet, Path.of(args[0]));
-        checkOutdated(serverSourceSet, Path.of(args[1]));
+        checkOutdated(apiSourceSet, Path.of(args[0], "src/main/java"));
+        checkOutdated(serverSourceSet, Path.of(args[1], "src/main/java"));
     }
 
     private static void checkOutdated(PaperPatternSourceSetRewriter sourceSetRewriter, Path sourceSet) throws IOException {

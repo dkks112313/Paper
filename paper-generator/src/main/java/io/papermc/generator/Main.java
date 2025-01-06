@@ -35,7 +35,7 @@ import org.jspecify.annotations.NullMarked;
 import org.slf4j.Logger;
 
 @NullMarked
-public final class Main {
+public class Main {
 
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final RegistryAccess.Frozen REGISTRY_ACCESS;
@@ -72,37 +72,46 @@ public final class Main {
     private Main() {
     }
 
-    public static void main(String[] args) {
-        PatternSourceSetRewriter apiSourceSet = new PaperPatternSourceSetRewriter();
-        PatternSourceSetRewriter serverSourceSet = new PaperPatternSourceSetRewriter();
-        Rewriters.bootstrap(apiSourceSet, serverSourceSet);
+    public static class Rewriter extends Main {
 
-        Path api = Path.of(args[0]);
-        Path server = Path.of(args[1]);
-        try {
-            LOGGER.info("Running API generators...");
-            generate(api, Generators.API);
-            apiSourceSet.apply(api.resolve("src/main/java"));
-
-            LOGGER.info("Running Server generators...");
-            generate(server, Generators.SERVER);
-            serverSourceSet.apply(server.resolve("src/main/java"));
-        } catch (RuntimeException ex) {
-            throw ex;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        public static void main(String[] args) {
+            boolean isApi = args[0].endsWith("-api");
+            PatternSourceSetRewriter sourceSet = new PaperPatternSourceSetRewriter();
+            (isApi ? Rewriters.API : Rewriters.SERVER).accept(sourceSet);
+            try {
+                sourceSet.apply(Path.of(args[0], "src/main/java"));
+            } catch (RuntimeException ex) {
+                throw ex;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
-    private static void generate(Path sourceSet, Collection<SourceGenerator> generators) throws IOException {
-        Path output = sourceSet.resolve("src/main/generated");
-        if (Files.exists(output)) {
-            PathUtils.deleteDirectory(output);
+    public static class Generator extends Main {
+
+        public static void main(String[] args) {
+            boolean isApi = args[0].endsWith("-api");
+
+            try {
+                generate(Path.of(args[0]), isApi ? Generators.API : Generators.SERVER);
+            } catch (RuntimeException ex) {
+                throw ex;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
 
-        for (SourceGenerator generator : generators) {
-            generator.writeToFile(output);
+        private static void generate(Path sourceSet, Collection<SourceGenerator> generators) throws IOException {
+            Path output = sourceSet.resolve("src/main/generated");
+            if (Files.exists(output)) {
+                PathUtils.deleteDirectory(output);
+            }
+
+            for (SourceGenerator generator : generators) {
+                generator.writeToFile(output);
+            }
+            LOGGER.info("Files written to {}", output.toAbsolutePath());
         }
-        LOGGER.info("Files written to {}", output.toAbsolutePath());
     }
 }

@@ -228,13 +228,13 @@ tasks.compileTestJava {
     options.compilerArgs.add("-parameters")
 }
 
-val scanJar = tasks.register("scanJarForBadCalls", io.papermc.paperweight.tasks.ScanJarForBadCalls::class) {
+val scanJarForBadCalls by tasks.registering(io.papermc.paperweight.tasks.ScanJarForBadCalls::class) {
     badAnnotations.add("Lio/papermc/paper/annotation/DoNotUse;")
     jarToScan.set(tasks.jar.flatMap { it.archiveFile })
     classpath.from(configurations.compileClasspath)
 }
 tasks.check {
-    dependsOn(scanJar)
+    dependsOn(scanJarForBadCalls)
 }
 
 val scanJarForOldGeneratedCode by tasks.registering(io.papermc.paperweight.tasks.ScanJarForOldGeneratedCode::class) {

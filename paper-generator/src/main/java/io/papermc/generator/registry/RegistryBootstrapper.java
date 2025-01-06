@@ -31,7 +31,15 @@ public class RegistryBootstrapper {
     }
 
     public static void bootstrap(PatternSourceSetRewriter apiSourceSet, PatternSourceSetRewriter serverSourceSet) {
-        apiSourceSet.register("RegistryEvents", RegistryEvents.class, new RegistryEventsRewriter());
-        serverSourceSet.register("RegistryDefinitions", Types.PAPER_REGISTRIES, new PaperRegistriesRewriter());
+        bootstrapApi(apiSourceSet);
+        bootstrapServer(serverSourceSet);
+    }
+
+    public static void bootstrapApi(PatternSourceSetRewriter sourceSet) {
+        sourceSet.register("RegistryEvents", RegistryEvents.class, new RegistryEventsRewriter());
+    }
+
+    public static void bootstrapServer(PatternSourceSetRewriter sourceSet) {
+        sourceSet.register("RegistryDefinitions", Types.PAPER_REGISTRIES, new PaperRegistriesRewriter());
     }
 }
