@@ -6,25 +6,26 @@ import net.kyori.adventure.text.format.NamedTextColor; // Paper
  */
 public enum DisplaySlot {
     // Paper start - Generated/DisplaySlot
-    BELOW_NAME("below_name"),
+    // @GeneratedFrom 1.21.4
     PLAYER_LIST("list"),
     SIDEBAR("sidebar"),
-    SIDEBAR_TEAM_BLACK(NamedTextColor.BLACK),
-    SIDEBAR_TEAM_DARK_BLUE(NamedTextColor.DARK_BLUE),
-    SIDEBAR_TEAM_DARK_GREEN(NamedTextColor.DARK_GREEN),
-    SIDEBAR_TEAM_DARK_AQUA(NamedTextColor.DARK_AQUA),
-    SIDEBAR_TEAM_DARK_RED(NamedTextColor.DARK_RED),
-    SIDEBAR_TEAM_DARK_PURPLE(NamedTextColor.DARK_PURPLE),
-    SIDEBAR_TEAM_GOLD(NamedTextColor.GOLD),
-    SIDEBAR_TEAM_GRAY(NamedTextColor.GRAY),
-    SIDEBAR_TEAM_DARK_GRAY(NamedTextColor.DARK_GRAY),
-    SIDEBAR_TEAM_BLUE(NamedTextColor.BLUE),
-    SIDEBAR_TEAM_GREEN(NamedTextColor.GREEN),
-    SIDEBAR_TEAM_AQUA(NamedTextColor.AQUA),
-    SIDEBAR_TEAM_RED(NamedTextColor.RED),
-    SIDEBAR_TEAM_LIGHT_PURPLE(NamedTextColor.LIGHT_PURPLE),
-    SIDEBAR_TEAM_YELLOW(NamedTextColor.YELLOW),
-    SIDEBAR_TEAM_WHITE(NamedTextColor.WHITE);
+    BELOW_NAME("below_name"),
+    SIDEBAR_TEAM_BLACK("sidebar.team.black"),
+    SIDEBAR_TEAM_DARK_BLUE("sidebar.team.dark_blue"),
+    SIDEBAR_TEAM_DARK_GREEN("sidebar.team.dark_green"),
+    SIDEBAR_TEAM_DARK_AQUA("sidebar.team.dark_aqua"),
+    SIDEBAR_TEAM_DARK_RED("sidebar.team.dark_red"),
+    SIDEBAR_TEAM_DARK_PURPLE("sidebar.team.dark_purple"),
+    SIDEBAR_TEAM_GOLD("sidebar.team.gold"),
+    SIDEBAR_TEAM_GRAY("sidebar.team.gray"),
+    SIDEBAR_TEAM_DARK_GRAY("sidebar.team.dark_gray"),
+    SIDEBAR_TEAM_BLUE("sidebar.team.blue"),
+    SIDEBAR_TEAM_GREEN("sidebar.team.green"),
+    SIDEBAR_TEAM_AQUA("sidebar.team.aqua"),
+    SIDEBAR_TEAM_RED("sidebar.team.red"),
+    SIDEBAR_TEAM_LIGHT_PURPLE("sidebar.team.light_purple"),
+    SIDEBAR_TEAM_YELLOW("sidebar.team.yellow"),
+    SIDEBAR_TEAM_WHITE("sidebar.team.white");
     // Paper end - Generated/DisplaySlot
 
     public static final net.kyori.adventure.util.Index<String, DisplaySlot> NAMES = net.kyori.adventure.util.Index.create(DisplaySlot.class, DisplaySlot::getId);

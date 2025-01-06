@@ -40,6 +40,10 @@ public class PaperRegistriesRewriter extends SearchReplaceRewriter {
             builder.append(this.importCollector.getShortName(this.classNamedView.findFirst(entry.implClass()))).append("::").append(entry.apiAccessName().equals(ConstantDescs.INIT_NAME) ? "new" : entry.apiAccessName());
             builder.append(')');
 
+            if (entry.fieldRename() != null) {
+                builder.append(".serializationUpdater(").append(Types.FIELD_RENAME.simpleName()).append('.').append(entry.fieldRename()).append(")");
+            }
+
             if (entry.apiRegistryBuilderImpl() != null) {
                 builder.append(".writable(");
                 builder.append(this.importCollector.getShortName(this.classNamedView.findFirst(entry.apiRegistryBuilderImpl()))).append("::new");
@@ -47,9 +51,6 @@ public class PaperRegistriesRewriter extends SearchReplaceRewriter {
             } else {
                 builder.append(".build()");
             }
-        }
-        if (entry.fieldRename() != null) {
-            builder.append(".withSerializationUpdater(").append(Types.FIELD_RENAME.simpleName()).append('.').append(entry.fieldRename()).append(")");
         }
         if (canBeDelayed && entry.isDelayed()) {
             builder.append(".delayed()");

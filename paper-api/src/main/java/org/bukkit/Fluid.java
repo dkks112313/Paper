@@ -12,26 +12,16 @@ import org.jetbrains.annotations.NotNull;
 public interface Fluid extends OldEnum<Fluid>, Keyed {
 
     // Paper start - Generated/Fluid
-    /**
-     * No fluid.
-     */
+    // @GeneratedFrom 1.21.4
     Fluid EMPTY = getFluid("empty");
-    /**
-     * Stationary water.
-     */
-    Fluid WATER = getFluid("water");
-    /**
-     * Flowing water.
-     */
-    Fluid FLOWING_WATER = getFluid("flowing_water");
-    /**
-     * Stationary lava.
-     */
-    Fluid LAVA = getFluid("lava");
-    /**
-     * Flowing lava.
-     */
+
     Fluid FLOWING_LAVA = getFluid("flowing_lava");
+
+    Fluid FLOWING_WATER = getFluid("flowing_water");
+
+    Fluid LAVA = getFluid("lava");
+
+    Fluid WATER = getFluid("water");
     // Paper end - Generated/Fluid
 
     @NotNull

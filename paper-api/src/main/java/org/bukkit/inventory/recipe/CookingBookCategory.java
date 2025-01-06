@@ -6,8 +6,9 @@ package org.bukkit.inventory.recipe;
 public enum CookingBookCategory {
 
     // Paper start - Generated/CookingBookCategory
+    // @GeneratedFrom 1.21.4
     FOOD,
     BLOCKS,
-    MISC
+    MISC;
     // Paper end - Generated/CookingBookCategory
 }

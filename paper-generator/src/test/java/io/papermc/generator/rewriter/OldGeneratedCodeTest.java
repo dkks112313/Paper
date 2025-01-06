@@ -16,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -39,11 +40,11 @@ public class OldGeneratedCodeTest {
 
         Rewriters.bootstrap(apiSourceSet, serverSourceSet);
 
-        checkOutdated(apiSourceSet);
-        checkOutdated(serverSourceSet);
+        checkOutdated(apiSourceSet, Path.of(args[0]));
+        checkOutdated(serverSourceSet, Path.of(args[1]));
     }
 
-    private static void checkOutdated(PaperPatternSourceSetRewriter sourceSetRewriter) throws IOException {
+    private static void checkOutdated(PaperPatternSourceSetRewriter sourceSetRewriter, Path sourceSet) throws IOException {
         IndentUnit globalIndentUnit = sourceSetRewriter.getMetadata().indentUnit();;
         for (Map.Entry<SourceFile, SourceRewriter> entry : sourceSetRewriter.getRewriters().entrySet()) {
             SourceRewriter rewriter = entry.getValue();
@@ -53,14 +54,9 @@ public class OldGeneratedCodeTest {
             }
 
             SourceFile file = entry.getKey();
-            // Path path = sourceSetRewriter.getAlternateOutput().resolve(file.path());
-            /*if (Files.notExists(path)) { // todo (softspoon): remove after
-                continue;
-            }*/
-
             IndentUnit indentUnit = file.metadata().flatMap(FileMetadata::indentUnit).orElse(globalIndentUnit);
             Set<SearchReplaceRewriter> rewriters = new HashSet<>(srt.getRewriters());
-            try (BufferedReader reader = Files.newBufferedReader(file.path(), StandardCharsets.UTF_8)) {
+            try (BufferedReader reader = Files.newBufferedReader(sourceSet.resolve(file.path()), StandardCharsets.UTF_8)) {
                 int lineCount = 0;
                 while (true) {
                     String line = reader.readLine();

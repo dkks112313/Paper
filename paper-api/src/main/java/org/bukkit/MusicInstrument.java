@@ -9,14 +9,22 @@ import org.jetbrains.annotations.Nullable;
 public abstract class MusicInstrument implements Keyed, net.kyori.adventure.translation.Translatable { // Paper - translation keys
 
     // Paper start - Generated/MusicInstrument
-    public static final MusicInstrument PONDER_GOAT_HORN = getInstrument("ponder_goat_horn");
-    public static final MusicInstrument SING_GOAT_HORN = getInstrument("sing_goat_horn");
-    public static final MusicInstrument SEEK_GOAT_HORN = getInstrument("seek_goat_horn");
-    public static final MusicInstrument FEEL_GOAT_HORN = getInstrument("feel_goat_horn");
+    // @GeneratedFrom 1.21.4
     public static final MusicInstrument ADMIRE_GOAT_HORN = getInstrument("admire_goat_horn");
+
     public static final MusicInstrument CALL_GOAT_HORN = getInstrument("call_goat_horn");
-    public static final MusicInstrument YEARN_GOAT_HORN = getInstrument("yearn_goat_horn");
+
     public static final MusicInstrument DREAM_GOAT_HORN = getInstrument("dream_goat_horn");
+
+    public static final MusicInstrument FEEL_GOAT_HORN = getInstrument("feel_goat_horn");
+
+    public static final MusicInstrument PONDER_GOAT_HORN = getInstrument("ponder_goat_horn");
+
+    public static final MusicInstrument SEEK_GOAT_HORN = getInstrument("seek_goat_horn");
+
+    public static final MusicInstrument SING_GOAT_HORN = getInstrument("sing_goat_horn");
+
+    public static final MusicInstrument YEARN_GOAT_HORN = getInstrument("yearn_goat_horn");
     // Paper end - Generated/MusicInstrument
 
     /**

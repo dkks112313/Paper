@@ -16,21 +16,37 @@ import org.jetbrains.annotations.NotNull;
 public abstract class StructureType implements Keyed {
 
     // Paper start - Generated/StructureType
+    // @GeneratedFrom 1.21.4
     public static final StructureType BURIED_TREASURE = getStructureType("buried_treasure");
+
     public static final StructureType DESERT_PYRAMID = getStructureType("desert_pyramid");
+
     public static final StructureType END_CITY = getStructureType("end_city");
+
     public static final StructureType FORTRESS = getStructureType("fortress");
+
     public static final StructureType IGLOO = getStructureType("igloo");
+
     public static final StructureType JIGSAW = getStructureType("jigsaw");
+
     public static final StructureType JUNGLE_TEMPLE = getStructureType("jungle_temple");
+
     public static final StructureType MINESHAFT = getStructureType("mineshaft");
+
     public static final StructureType NETHER_FOSSIL = getStructureType("nether_fossil");
+
     public static final StructureType OCEAN_MONUMENT = getStructureType("ocean_monument");
+
     public static final StructureType OCEAN_RUIN = getStructureType("ocean_ruin");
+
     public static final StructureType RUINED_PORTAL = getStructureType("ruined_portal");
+
     public static final StructureType SHIPWRECK = getStructureType("shipwreck");
+
     public static final StructureType STRONGHOLD = getStructureType("stronghold");
+
     public static final StructureType SWAMP_HUT = getStructureType("swamp_hut");
+
     public static final StructureType WOODLAND_MANSION = getStructureType("woodland_mansion");
     // Paper end - Generated/StructureType
 

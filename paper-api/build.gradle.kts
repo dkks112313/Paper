@@ -237,7 +237,7 @@ tasks.check {
     dependsOn(scanJar)
 }
 
-val scanJarForOldGeneratedCode = tasks.registering(io.papermc.paperweight.tasks.ScanJarForOldGeneratedCode::class) {
+val scanJarForOldGeneratedCode by tasks.registering(io.papermc.paperweight.tasks.ScanJarForOldGeneratedCode::class) {
     mcVersion.set(providers.gradleProperty("mcVersion"))
     annotation.set("Lio/papermc/paper/generated/GeneratedFrom;")
     jarToScan.set(tasks.jar.flatMap { it.archiveFile })

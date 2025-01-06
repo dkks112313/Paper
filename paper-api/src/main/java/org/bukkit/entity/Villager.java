@@ -172,12 +172,19 @@ public interface Villager extends AbstractVillager {
     interface Type extends OldEnum<Type>, Keyed {
 
         // Paper start - Generated/VillagerType
+        // @GeneratedFrom 1.21.4
         Type DESERT = getType("desert");
+
         Type JUNGLE = getType("jungle");
+
         Type PLAINS = getType("plains");
+
         Type SAVANNA = getType("savanna");
+
         Type SNOW = getType("snow");
+
         Type SWAMP = getType("swamp");
+
         Type TAIGA = getType("taiga");
         // Paper end - Generated/VillagerType
 
@@ -217,72 +224,87 @@ public interface Villager extends AbstractVillager {
     interface Profession extends OldEnum<Profession>, Keyed, net.kyori.adventure.translation.Translatable {
 
         // Paper start - Generated/VillagerProfession
-        Profession NONE = getProfession("none");
+        // @GeneratedFrom 1.21.4
         /**
          * Armorer profession. Wears a black apron. Armorers primarily trade for
          * iron armor, chainmail armor, and sometimes diamond armor.
          */
         Profession ARMORER = getProfession("armorer");
+
         /**
          * Butcher profession. Wears a white apron. Butchers primarily trade for
          * raw and cooked food.
          */
         Profession BUTCHER = getProfession("butcher");
+
         /**
          * Cartographer profession. Wears a white robe. Cartographers primarily
          * trade for explorer maps and some paper.
          */
         Profession CARTOGRAPHER = getProfession("cartographer");
+
         /**
          * Cleric profession. Wears a purple robe. Clerics primarily trade for
          * rotten flesh, gold ingot, redstone, lapis, ender pearl, glowstone,
          * and bottle o' enchanting.
          */
         Profession CLERIC = getProfession("cleric");
+
         /**
          * Farmer profession. Wears a brown robe. Farmers primarily trade for
          * food-related items.
          */
         Profession FARMER = getProfession("farmer");
+
         /**
          * Fisherman profession. Wears a brown robe. Fisherman primarily trade
          * for fish, as well as possibly selling string and/or coal.
          */
         Profession FISHERMAN = getProfession("fisherman");
+
         /**
          * Fletcher profession. Wears a brown robe. Fletchers primarily trade
          * for string, bows, and arrows.
          */
         Profession FLETCHER = getProfession("fletcher");
+
         /**
          * Leatherworker profession. Wears a white apron. Leatherworkers
          * primarily trade for leather, and leather armor, as well as saddles.
          */
         Profession LEATHERWORKER = getProfession("leatherworker");
+
         /**
          * Librarian profession. Wears a white robe. Librarians primarily trade
          * for paper, books, and enchanted books.
          */
         Profession LIBRARIAN = getProfession("librarian");
+
         /**
          * Mason profession.
          */
         Profession MASON = getProfession("mason");
+
         /**
          * Nitwit profession. Wears a green apron, cannot trade. Nitwit
          * villagers do not do anything. They do not have any trades by default.
          */
         Profession NITWIT = getProfession("nitwit");
+
+        Profession NONE = getProfession("none");
+
         /**
          * Shepherd profession. Wears a brown robe. Shepherds primarily trade for
          * wool items, and shears.
          */
         Profession SHEPHERD = getProfession("shepherd");
+
         /**
          * Toolsmith profession. Wears a black apron. Tool smiths primarily
          * trade for iron and diamond tools.
          */
         Profession TOOLSMITH = getProfession("toolsmith");
+
         /**
          * Weaponsmith profession. Wears a black apron. Weapon smiths primarily
          * trade for iron and diamond weapons, sometimes enchanted.

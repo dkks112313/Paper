@@ -290,55 +290,76 @@ public final class MapCursor {
     public interface Type extends OldEnum<Type>, Keyed {
 
         // Paper start - Generated/MapCursorType
-        Type PLAYER = getType("player");
-        Type FRAME = getType("frame");
-        Type RED_MARKER = getType("red_marker");
-        Type BLUE_MARKER = getType("blue_marker");
-        Type TARGET_X = getType("target_x");
-        Type TARGET_POINT = getType("target_point");
-        Type PLAYER_OFF_MAP = getType("player_off_map");
-        Type PLAYER_OFF_LIMITS = getType("player_off_limits");
-        Type MANSION = getType("mansion");
-        Type MONUMENT = getType("monument");
-        Type BANNER_WHITE = getType("banner_white");
-        Type BANNER_ORANGE = getType("banner_orange");
-        Type BANNER_MAGENTA = getType("banner_magenta");
-        Type BANNER_LIGHT_BLUE = getType("banner_light_blue");
-        Type BANNER_YELLOW = getType("banner_yellow");
-        Type BANNER_LIME = getType("banner_lime");
-        Type BANNER_PINK = getType("banner_pink");
-        Type BANNER_GRAY = getType("banner_gray");
-        Type BANNER_LIGHT_GRAY = getType("banner_light_gray");
-        Type BANNER_CYAN = getType("banner_cyan");
-        Type BANNER_PURPLE = getType("banner_purple");
-        Type BANNER_BLUE = getType("banner_blue");
-        Type BANNER_BROWN = getType("banner_brown");
-        Type BANNER_GREEN = getType("banner_green");
-        Type BANNER_RED = getType("banner_red");
+        // @GeneratedFrom 1.21.4
         Type BANNER_BLACK = getType("banner_black");
-        Type RED_X = getType("red_x");
-        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
-        @ApiStatus.Experimental
-        Type VILLAGE_DESERT = getType("village_desert");
-        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
-        @ApiStatus.Experimental
-        Type VILLAGE_PLAINS = getType("village_plains");
-        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
-        @ApiStatus.Experimental
-        Type VILLAGE_SAVANNA = getType("village_savanna");
-        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
-        @ApiStatus.Experimental
-        Type VILLAGE_SNOWY = getType("village_snowy");
-        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
-        @ApiStatus.Experimental
-        Type VILLAGE_TAIGA = getType("village_taiga");
-        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
-        @ApiStatus.Experimental
+
+        Type BANNER_BLUE = getType("banner_blue");
+
+        Type BANNER_BROWN = getType("banner_brown");
+
+        Type BANNER_CYAN = getType("banner_cyan");
+
+        Type BANNER_GRAY = getType("banner_gray");
+
+        Type BANNER_GREEN = getType("banner_green");
+
+        Type BANNER_LIGHT_BLUE = getType("banner_light_blue");
+
+        Type BANNER_LIGHT_GRAY = getType("banner_light_gray");
+
+        Type BANNER_LIME = getType("banner_lime");
+
+        Type BANNER_MAGENTA = getType("banner_magenta");
+
+        Type BANNER_ORANGE = getType("banner_orange");
+
+        Type BANNER_PINK = getType("banner_pink");
+
+        Type BANNER_PURPLE = getType("banner_purple");
+
+        Type BANNER_RED = getType("banner_red");
+
+        Type BANNER_WHITE = getType("banner_white");
+
+        Type BANNER_YELLOW = getType("banner_yellow");
+
+        Type BLUE_MARKER = getType("blue_marker");
+
+        Type FRAME = getType("frame");
+
         Type JUNGLE_TEMPLE = getType("jungle_temple");
-        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
-        @ApiStatus.Experimental
+
+        Type MANSION = getType("mansion");
+
+        Type MONUMENT = getType("monument");
+
+        Type PLAYER = getType("player");
+
+        Type PLAYER_OFF_LIMITS = getType("player_off_limits");
+
+        Type PLAYER_OFF_MAP = getType("player_off_map");
+
+        Type RED_MARKER = getType("red_marker");
+
+        Type RED_X = getType("red_x");
+
         Type SWAMP_HUT = getType("swamp_hut");
+
+        Type TARGET_POINT = getType("target_point");
+
+        Type TARGET_X = getType("target_x");
+
         Type TRIAL_CHAMBERS = getType("trial_chambers");
+
+        Type VILLAGE_DESERT = getType("village_desert");
+
+        Type VILLAGE_PLAINS = getType("village_plains");
+
+        Type VILLAGE_SAVANNA = getType("village_savanna");
+
+        Type VILLAGE_SNOWY = getType("village_snowy");
+
+        Type VILLAGE_TAIGA = getType("village_taiga");
         // Paper end - Generated/MapCursorType
 
         @NotNull

@@ -15,19 +15,17 @@ import org.jetbrains.annotations.ApiStatus;
 public interface FeatureFlag extends Keyed {
 
     // Paper start - Generated/FeatureFlag
-    /**
-     * The {@code vanilla} feature flag.
-     */
-    FeatureFlag VANILLA = create("vanilla");
-
+    // @GeneratedFrom 1.21.4
     @ApiStatus.Experimental
-    FeatureFlag TRADE_REBALANCE = create("trade_rebalance");
+    FeatureFlag MINECART_IMPROVEMENTS = create("minecart_improvements");
 
     @ApiStatus.Experimental
     FeatureFlag REDSTONE_EXPERIMENTS = create("redstone_experiments");
 
     @ApiStatus.Experimental
-    FeatureFlag MINECART_IMPROVEMENTS = create("minecart_improvements");
+    FeatureFlag TRADE_REBALANCE = create("trade_rebalance");
+
+    FeatureFlag VANILLA = create("vanilla");
     // Paper end - Generated/FeatureFlag
 
     /**

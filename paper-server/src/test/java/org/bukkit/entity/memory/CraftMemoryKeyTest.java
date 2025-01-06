@@ -48,31 +48,4 @@ public class CraftMemoryKeyTest {
         MemoryKey<Location> bukkitHomeKey = CraftMemoryKey.minecraftToBukkit(MemoryModuleType.MEETING_POINT);
         assertEquals(MemoryKey.MEETING_POINT, bukkitHomeKey, "MemoryKey should be MEETING_POINT");
     }
-
-    @Test
-    public void shouldReturnNullWhenBukkitRepresentationOfKeyisNotAvailable() {
-        MemoryKey<?> bukkitNoKey = CraftMemoryKey.minecraftToBukkit(MemoryModuleType.NEAREST_LIVING_ENTITIES);
-        assertNull(bukkitNoKey, "MemoryModuleType should be null");
-    }
-
-    @Test
-    public void shouldReturnNullWhenBukkitRepresentationOfKeyisNotAvailableAndSerializerIsNotPresent() {
-        for (MemoryModuleType<?> memoryModuleType : BuiltInRegistries.MEMORY_MODULE_TYPE) {
-            if (!memoryModuleType.getCodec().isPresent()) {
-                MemoryKey<?> bukkitNoKey = CraftMemoryKey.minecraftToBukkit(memoryModuleType);
-                assertNull(bukkitNoKey, "MemoryModuleType should be null");
-            }
-        }
-    }
-
-    @Test
-    @Disabled("Unit type not yet implemented")
-    public void shouldReturnAnInstanceOfMemoryKeyWhenBukkitRepresentationOfKeyisAvailableAndSerializerIsPresent() {
-        for (MemoryModuleType<?> memoryModuleType : BuiltInRegistries.MEMORY_MODULE_TYPE) {
-            if (memoryModuleType.getCodec().isPresent()) {
-                MemoryKey<?> bukkitNoKey = CraftMemoryKey.minecraftToBukkit(memoryModuleType);
-                assertNotNull(bukkitNoKey, "MemoryModuleType should not be null " + BuiltInRegistries.MEMORY_MODULE_TYPE.getKey(memoryModuleType));
-            }
-        }
-    }
 }

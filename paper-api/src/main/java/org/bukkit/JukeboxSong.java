@@ -10,25 +10,44 @@ import org.jetbrains.annotations.NotNull;
 public interface JukeboxSong extends Keyed, Translatable {
 
     // Paper start - Generated/JukeboxSong
-    JukeboxSong THIRTEEN = get("13");
-    JukeboxSong CAT = get("cat");
-    JukeboxSong BLOCKS = get("blocks");
-    JukeboxSong CHIRP = get("chirp");
-    JukeboxSong FAR = get("far");
-    JukeboxSong MALL = get("mall");
-    JukeboxSong MELLOHI = get("mellohi");
-    JukeboxSong STAL = get("stal");
-    JukeboxSong STRAD = get("strad");
-    JukeboxSong WARD = get("ward");
+    // @GeneratedFrom 1.21.4
     JukeboxSong ELEVEN = get("11");
-    JukeboxSong WAIT = get("wait");
-    JukeboxSong PIGSTEP = get("pigstep");
-    JukeboxSong OTHERSIDE = get("otherside");
+
+    JukeboxSong THIRTEEN = get("13");
+
     JukeboxSong FIVE = get("5");
-    JukeboxSong RELIC = get("relic");
-    JukeboxSong PRECIPICE = get("precipice");
+
+    JukeboxSong BLOCKS = get("blocks");
+
+    JukeboxSong CAT = get("cat");
+
+    JukeboxSong CHIRP = get("chirp");
+
     JukeboxSong CREATOR = get("creator");
+
     JukeboxSong CREATOR_MUSIC_BOX = get("creator_music_box");
+
+    JukeboxSong FAR = get("far");
+
+    JukeboxSong MALL = get("mall");
+
+    JukeboxSong MELLOHI = get("mellohi");
+
+    JukeboxSong OTHERSIDE = get("otherside");
+
+    JukeboxSong PIGSTEP = get("pigstep");
+
+    JukeboxSong PRECIPICE = get("precipice");
+
+    JukeboxSong RELIC = get("relic");
+
+    JukeboxSong STAL = get("stal");
+
+    JukeboxSong STRAD = get("strad");
+
+    JukeboxSong WAIT = get("wait");
+
+    JukeboxSong WARD = get("ward");
     // Paper end - Generated/JukeboxSong
 
     @NotNull

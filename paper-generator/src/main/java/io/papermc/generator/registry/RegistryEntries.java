@@ -155,11 +155,11 @@ public final class RegistryEntries {
         entry(Registries.STRUCTURE, BuiltinStructures.class, Structure.class).delayed(),
         entry(Registries.TRIM_MATERIAL, TrimMaterials.class, TrimMaterial.class).delayed(),
         entry(Registries.TRIM_PATTERN, TrimPatterns.class, TrimPattern.class).delayed(),
-        entry(Registries.DAMAGE_TYPE, DamageTypes.class, DamageType.class).apiRegistryBuilder(DamageTypeRegistryEntry.class, "PaperDamageTypeRegistryEntry.PaperBuilder").delayed(),
+        entry(Registries.DAMAGE_TYPE, DamageTypes.class, DamageType.class).apiRegistryBuilder(DamageTypeRegistryEntry.Builder.class, "PaperDamageTypeRegistryEntry.PaperBuilder").delayed(),
         entry(Registries.WOLF_VARIANT, WolfVariants.class, Wolf.Variant.class).delayed(),
         entry(Registries.ENCHANTMENT, Enchantments.class, Enchantment.class).apiRegistryBuilder(EnchantmentRegistryEntry.Builder.class, "PaperEnchantmentRegistryEntry.PaperBuilder").withSerializationUpdater("ENCHANTMENT_RENAME").delayed(),
         entry(Registries.JUKEBOX_SONG, JukeboxSongs.class, JukeboxSong.class).delayed(),
-        entry(Registries.BANNER_PATTERN, BannerPatterns.class, PatternType.class).apiRegistryBuilder(BannerPatternRegistryEntry.class, "PaperBannerPatternRegistryEntry.PaperBuilder").delayed(),
+        entry(Registries.BANNER_PATTERN, BannerPatterns.class, PatternType.class).apiRegistryBuilder(BannerPatternRegistryEntry.Builder.class, "PaperBannerPatternRegistryEntry.PaperBuilder").delayed(),
         entry(Registries.PAINTING_VARIANT, PaintingVariants.class, Art.class).apiRegistryBuilder(PaintingVariantRegistryEntry.Builder.class, "PaperPaintingVariantRegistryEntry.PaperBuilder").apiRegistryField("ART").delayed(),
         entry(Registries.INSTRUMENT, Instruments.class, MusicInstrument.class).delayed()
     );

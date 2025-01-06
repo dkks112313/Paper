@@ -13,49 +13,27 @@ import org.jetbrains.annotations.NotNull;
 public interface TrimMaterial extends Keyed, Translatable {
 
     // Paper start - Generated/TrimMaterial
-    /**
-     * {@link Material#QUARTZ}.
-     */
-    TrimMaterial QUARTZ = getTrimMaterial("quartz");
-    /**
-     * {@link Material#IRON_INGOT}.
-     */
-    TrimMaterial IRON = getTrimMaterial("iron");
-    /**
-     * {@link Material#NETHERITE_INGOT}.
-     */
-    TrimMaterial NETHERITE = getTrimMaterial("netherite");
-    /**
-     * {@link Material#REDSTONE}.
-     */
-    TrimMaterial REDSTONE = getTrimMaterial("redstone");
-    /**
-     * {@link Material#COPPER_INGOT}.
-     */
-    TrimMaterial COPPER = getTrimMaterial("copper");
-    /**
-     * {@link Material#GOLD_INGOT}.
-     */
-    TrimMaterial GOLD = getTrimMaterial("gold");
-    /**
-     * {@link Material#EMERALD}.
-     */
-    TrimMaterial EMERALD = getTrimMaterial("emerald");
-    /**
-     * {@link Material#DIAMOND}.
-     */
-    TrimMaterial DIAMOND = getTrimMaterial("diamond");
-    /**
-     * {@link Material#LAPIS_LAZULI}.
-     */
-    TrimMaterial LAPIS = getTrimMaterial("lapis");
-    /**
-     * {@link Material#AMETHYST_SHARD}.
-     */
+    // @GeneratedFrom 1.21.4
     TrimMaterial AMETHYST = getTrimMaterial("amethyst");
-    /**
-     * {@link Material#RESIN_BRICK}.
-     */
+
+    TrimMaterial COPPER = getTrimMaterial("copper");
+
+    TrimMaterial DIAMOND = getTrimMaterial("diamond");
+
+    TrimMaterial EMERALD = getTrimMaterial("emerald");
+
+    TrimMaterial GOLD = getTrimMaterial("gold");
+
+    TrimMaterial IRON = getTrimMaterial("iron");
+
+    TrimMaterial LAPIS = getTrimMaterial("lapis");
+
+    TrimMaterial NETHERITE = getTrimMaterial("netherite");
+
+    TrimMaterial QUARTZ = getTrimMaterial("quartz");
+
+    TrimMaterial REDSTONE = getTrimMaterial("redstone");
+
     TrimMaterial RESIN = getTrimMaterial("resin");
     // Paper end - Generated/TrimMaterial
 
