@@ -14,6 +14,7 @@ import io.papermc.typewriter.replace.SearchMetadata;
 import io.papermc.typewriter.replace.SearchReplaceRewriter;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Supplier;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -35,16 +36,15 @@ public class RegistryFieldRewriter<T> extends SearchReplaceRewriter {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private final Registry<T> registry;
-    private final Supplier<Map<ResourceKey<T>, SingleFlagHolder>> experimentalKeys;
+    private final ResourceKey<? extends Registry<T>> registryKey;
     private final boolean isFilteredRegistry;
     private final @Nullable String fetchMethod;
 
     protected @MonotonicNonNull ClassNamed fieldClass;
+    private @MonotonicNonNull Supplier<Map<ResourceKey<T>, SingleFlagHolder>> experimentalKeys;
 
     public RegistryFieldRewriter(ResourceKey<? extends Registry<T>> registryKey, @Nullable String fetchMethod) {
-        this.registry = Main.REGISTRY_ACCESS.lookupOrThrow(registryKey);
-        this.experimentalKeys = Suppliers.memoize(() -> ExperimentalCollector.collectDataDrivenElementIds(this.registry));
+        this.registryKey = registryKey;
         this.isFilteredRegistry = FeatureElement.FILTERED_REGISTRIES.contains(registryKey);
         this.fetchMethod = fetchMethod;
     }
@@ -58,7 +58,7 @@ public class RegistryFieldRewriter<T> extends SearchReplaceRewriter {
             try {
                 this.fieldClass.knownClass().getDeclaredMethod(this.fetchMethod, String.class);
             } catch (NoSuchMethodException e) {
-                LOGGER.error("Fetch method not found, skipping the rewriter for registry fields of {}", this.registry.key(), e);
+                LOGGER.error("Fetch method not found, skipping the rewriter for registry fields of {}", this.registryKey, e);
                 return false;
             }
         }
@@ -68,8 +68,10 @@ public class RegistryFieldRewriter<T> extends SearchReplaceRewriter {
 
     @Override
     protected void insert(SearchMetadata metadata, StringBuilder builder) {
-        boolean isInterface = this.fieldClass.knownClass() != null && this.fieldClass.knownClass().isInterface();
-        Iterator<Holder.Reference<T>> referenceIterator = this.registry.listElements().filter(this::canPrintField).sorted(Formatting.alphabeticKeyOrder(reference -> reference.key().location().getPath())).iterator();
+        boolean isInterface = Objects.requireNonNull(this.fieldClass.knownClass()).isInterface();
+        Registry<T> registry = Main.REGISTRY_ACCESS.lookupOrThrow(this.registryKey);
+        this.experimentalKeys = Suppliers.memoize(() -> ExperimentalCollector.collectDataDrivenElementIds(registry));
+        Iterator<Holder.Reference<T>> referenceIterator = registry.listElements().filter(this::canPrintField).sorted(Formatting.alphabeticKeyOrder(reference -> reference.key().location().getPath())).iterator();
 
         while (referenceIterator.hasNext()) {
             Holder.Reference<T> reference = referenceIterator.next();

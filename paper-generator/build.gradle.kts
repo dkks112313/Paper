@@ -29,82 +29,109 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-val rewriteApi = tasks.registerGenerationTask("rewriteApi", "paper-api") {
-    description = "Rewrite boilerplate content of API"
-    dependsOn("testRewriteApi")
+val gameVersion = providers.gradleProperty("mcVersion")
+
+val rewriteApi = tasks.registerGenerationTask("rewriteApi", true, "paper-api") {
+    description = "Rewrite existing API classes"
     mainClass.set("io.papermc.generator.Main\$Rewriter")
     classpath(sourceSets.main.map { it.runtimeClasspath })
-    systemProperty("typewriter.lexer.ignoreMarkdownDocComments", true)
 }
 
-val rewriteImpl = tasks.registerGenerationTask("rewriteImpl", "paper-server") {
-    description = "Rewrite boilerplate content of API implementation"
-    dependsOn("testRewriteImpl")
+val rewriteImpl = tasks.registerGenerationTask("rewriteImpl", true, "paper-server") {
+    description = "Rewrite existing implementation classes"
     mainClass.set("io.papermc.generator.Main\$Rewriter")
     classpath(sourceSets.main.map { it.runtimeClasspath })
-    systemProperty("typewriter.lexer.ignoreMarkdownDocComments", true)
 }
 
 tasks.register("rewrite") {
     group = "generation"
-    description = "Rewrite boilerplate content of API and its implementation"
+    description = "Rewrite existing API classes and its implementation"
     dependsOn(rewriteApi, rewriteImpl)
 }
 
 
-val generateApi = tasks.registerGenerationTask("generateApi", "paper-api") {
-    description = "Generate boilerplate content of API"
-    dependsOn("testGenerateApi")
+val generateApi = tasks.registerGenerationTask("generateApi", false, "paper-api") {
+    description = "Generate new API classes"
     mainClass.set("io.papermc.generator.Main\$Generator")
     classpath(sourceSets.main.map { it.runtimeClasspath })
 }
 
-val generateImpl = tasks.registerGenerationTask("generateImpl", "paper-server") {
-    description = "Generate boilerplate content of API implementation"
-    dependsOn("testGenerateImpl")
+val generateImpl = tasks.registerGenerationTask("generateImpl", false, "paper-server") {
+    description = "Generate new implementation classes"
     mainClass.set("io.papermc.generator.Main\$Generator")
     classpath(sourceSets.main.map { it.runtimeClasspath })
 }
 
 tasks.register("generate") {
     group = "generation"
-    description = "Generate boilerplate content of API and its implementation"
+    description = "Generate new API classes and its implementation"
     dependsOn(generateApi, generateImpl)
 }
 
-tasks.register<JavaExec>("scanOldGeneratedSourceCode") {
-    group = "verification"
-    javaLauncher = project.javaToolchains.defaultJavaLauncher(project)
-    description = "Scan source code to detect outdated generated code"
-    args(project(":paper-api").projectDir.toString(), project(":paper-server").projectDir.toString())
-    mainClass.set("io.papermc.generator.rewriter.OldGeneratedCodeTest")
-    classpath(sourceSets.test.map { it.runtimeClasspath })
+if (providers.gradleProperty("updatingMinecraft").getOrElse("false").toBoolean()) {
+    val scanOldGeneratedSourceCode by tasks.registering(JavaExec::class) {
+        group = "verification"
+        description = "Scan source code to detect outdated generated code"
+        javaLauncher = javaToolchains.defaultJavaLauncher(project)
+        mainClass.set("io.papermc.generator.rewriter.utils.ScanOldGeneratedSourceCode")
+        classpath(sourceSets.main.map { it.runtimeClasspath })
+
+        val projectDirs = listOf("paper-api", "paper-server").mapNotNull { project.rootProject.findProject(it)?.projectDir }
+        args(projectDirs.map { it.toString() })
+        val workDirs = projectDirs.map { it.resolve("src/main/java") }
+
+        inputs.files(workDirs)
+        inputs.property("gameVersion", gameVersion)
+        outputs.dirs(workDirs)
+    }
+    tasks.check {
+        dependsOn(scanOldGeneratedSourceCode)
+    }
 }
 
 fun TaskContainer.registerGenerationTask(
     name: String,
+    rewrite: Boolean,
     vararg args: String,
     block: JavaExec.() -> Unit
 ): TaskProvider<JavaExec> = register<JavaExec>(name) {
     group = "generation"
+    dependsOn("checkModuleFor${name.capitalized()}")
     javaLauncher = project.javaToolchains.defaultJavaLauncher(project)
-    if (args.isNotEmpty()) {
-        val projectDirs = args.map { project.rootProject.findProject(it)?.projectDir }
-        args(projectDirs.map { it.toString() })
-        inputs.files(projectDirs)
+    inputs.property("gameVersion", gameVersion)
+    inputs.dir(layout.projectDirectory.dir("src/main/java")).withPathSensitivity(PathSensitivity.RELATIVE)
+    val projectDirs = args.mapNotNull { project.rootProject.findProject(it)?.projectDir }
+    if (projectDirs.isNotEmpty()) {
+        args(projectDirs)
+        if (rewrite) {
+            systemProperty("typewriter.lexer.ignoreMarkdownDocComments", true)
+            inputs.files(projectDirs.map { it.resolve("src/main/java") })
+            outputs.dirs(projectDirs.map { it.resolve("src/main/java") })
+        } else {
+            outputs.dirs(projectDirs.map { it.resolve("src/main/generated") })
+        }
+    } else {
+        error("Projects $args unavailable during configuration phase")
     }
 
     block(this)
 }
 
+tasks.test {
+    useJUnitPlatform()
+}
+
+val test by testing.suites.existing(JvmTestSuite::class)
 sequenceOf("api", "impl").forEach { side ->
     sequenceOf("generate", "rewrite").forEach { type ->
-        val task = tasks.register<Test>("test${type.capitalized()}${side.capitalized()}") {
+        val task = tasks.register<Test>("checkModuleFor${type.capitalized()}${side.capitalized()}") {
             group = "verification"
             javaLauncher = project.javaToolchains.defaultJavaLauncher(project)
             useJUnitPlatform {
-                includeTags.add("${type}-${side}")
+                includeTags("$type-$side") // todo skip when no test found
             }
+            testClassesDirs = files(test.map { it.sources.output.classesDirs })
+            classpath = files(test.map { it.sources.runtimeClasspath })
         }
         tasks.check {
             dependsOn(task)

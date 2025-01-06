@@ -22,7 +22,6 @@ import java.util.function.Supplier;
 import javax.lang.model.SourceVersion;
 import net.kyori.adventure.key.Key;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureElement;
 import net.minecraft.world.flag.FeatureFlags;
@@ -41,15 +40,13 @@ import static javax.lang.model.element.Modifier.STATIC;
 public class GeneratedKeyType<T> extends SimpleGenerator {
 
     private final RegistryEntry<T> entry;
-    private final Registry<T> registry;
     private final Supplier<Map<ResourceKey<T>, SingleFlagHolder>> experimentalKeys;
     private final boolean isFilteredRegistry;
 
     public GeneratedKeyType(String packageName, RegistryEntry<T> entry) {
         super(entry.keyClassName().concat("Keys"), packageName);
         this.entry = entry;
-        this.registry = entry.registry();
-        this.experimentalKeys = Suppliers.memoize(() -> ExperimentalCollector.collectDataDrivenElementIds(this.registry));
+        this.experimentalKeys = Suppliers.memoize(() -> ExperimentalCollector.collectDataDrivenElementIds(entry.registry()));
         this.isFilteredRegistry = FeatureElement.FILTERED_REGISTRIES.contains(entry.registryKey());
     }
 
@@ -64,7 +61,7 @@ public class GeneratedKeyType<T> extends SimpleGenerator {
             .returns(returnType);
         if (publicCreateKeyMethod) {
             create.addAnnotation(EXPERIMENTAL_API_ANNOTATION); // TODO remove once not experimental
-            create.addJavadoc(Javadocs.CREATE_TYPED_KEY_JAVADOC, this.entry.apiClass(), this.registry.key().location().toString());
+            create.addJavadoc(Javadocs.CREATE_TYPED_KEY_JAVADOC, this.entry.apiClass(), this.entry.registryKey().location().toString());
         }
         return create;
     }
@@ -88,7 +85,7 @@ public class GeneratedKeyType<T> extends SimpleGenerator {
         MethodSpec.Builder createMethod = this.createMethod(typedKeyType);
 
         boolean allExperimental = true;
-        for (Holder.Reference<T> reference : this.registry.listElements().sorted(Formatting.alphabeticKeyOrder(reference -> reference.key().location().getPath())).toList()) {
+        for (Holder.Reference<T> reference : this.entry.registry().listElements().sorted(Formatting.alphabeticKeyOrder(reference -> reference.key().location().getPath())).toList()) {
             ResourceKey<T> key = reference.key();
             String keyPath = key.location().getPath();
             String fieldName = Formatting.formatKeyAsField(keyPath);

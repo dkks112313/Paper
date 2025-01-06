@@ -1,8 +1,7 @@
-package io.papermc.generator.rewriter;
+package io.papermc.generator.rewriter.utils;
 
 import io.papermc.generator.Rewriters;
 import io.papermc.generator.rewriter.registration.PaperPatternSourceSetRewriter;
-import io.papermc.generator.rewriter.utils.Annotations;
 import io.papermc.paper.generated.GeneratedFrom;
 import io.papermc.typewriter.SourceFile;
 import io.papermc.typewriter.SourceRewriter;
@@ -12,20 +11,19 @@ import io.papermc.typewriter.parser.StringReader;
 import io.papermc.typewriter.replace.CommentMarker;
 import io.papermc.typewriter.replace.SearchReplaceRewriter;
 import io.papermc.typewriter.replace.SearchReplaceRewriterBase;
-import java.io.BufferedReader;
+import net.minecraft.SharedConstants;
 import java.io.IOException;
+import java.io.LineNumberReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import net.minecraft.SharedConstants;
 
 import static io.papermc.typewriter.replace.CommentMarker.EMPTY_MARKER;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OldGeneratedCodeTest {
+public class ScanOldGeneratedSourceCode {
 
     private static final String CURRENT_VERSION;
 
@@ -56,20 +54,17 @@ public class OldGeneratedCodeTest {
             SourceFile file = entry.getKey();
             IndentUnit indentUnit = file.metadata().flatMap(FileMetadata::indentUnit).orElse(globalIndentUnit);
             Set<SearchReplaceRewriter> rewriters = new HashSet<>(srt.getRewriters());
-            try (BufferedReader reader = Files.newBufferedReader(sourceSet.resolve(file.path()), StandardCharsets.UTF_8)) {
-                int lineCount = 0;
+            try (LineNumberReader reader = new LineNumberReader(Files.newBufferedReader(sourceSet.resolve(file.path()), StandardCharsets.UTF_8))) {
                 while (true) {
                     String line = reader.readLine();
                     if (line == null) {
                         break;
                     }
-                    lineCount++;
                     if (line.isEmpty()) {
                         continue;
                     }
 
-                    StringReader lineIterator = new StringReader(line);
-                    CommentMarker marker = srt.searchStartMarker(lineIterator, indentUnit, rewriters);
+                    CommentMarker marker = srt.searchStartMarker(new StringReader(line), indentUnit, rewriters);
                     if (marker != EMPTY_MARKER) {
                         int startIndentSize = marker.indentSize();
                         if (startIndentSize % indentUnit.size() != 0) {
@@ -80,7 +75,6 @@ public class OldGeneratedCodeTest {
                         if (nextLine == null) {
                             break;
                         }
-                        lineCount++;
                         if (nextLine.isEmpty()) {
                             continue;
                         }
@@ -94,14 +88,15 @@ public class OldGeneratedCodeTest {
                         String generatedComment = "// %s ".formatted(Annotations.annotationStyle(GeneratedFrom.class));
                         if (nextLineIterator.trySkipString(generatedComment) && nextLineIterator.canRead()) {
                             String generatedVersion = nextLineIterator.getRemaining();
-                            assertEquals(CURRENT_VERSION, generatedVersion,
-                                "Code at line %d in %s is marked as being generated in version %s when the current version is %s".formatted(
-                                    lineCount, file.mainClass().canonicalName(),
-                                    generatedVersion, CURRENT_VERSION));
+                            if (!CURRENT_VERSION.equals(generatedVersion)) {
+                                throw new AssertionError(
+                                    "Code at line %d in %s is marked as being generated in version %s when the current version is %s".formatted(
+                                    reader.getLineNumber(), file.mainClass().canonicalName(), generatedVersion, CURRENT_VERSION)
+                                );
+                            }
 
                             if (!marker.owner().getOptions().multipleOperation()) {
-                                rewriters.remove(marker.owner());
-                                if (rewriters.isEmpty()) {
+                                if (rewriters.remove(marker.owner()) && rewriters.isEmpty()) {
                                     break;
                                 }
                             }

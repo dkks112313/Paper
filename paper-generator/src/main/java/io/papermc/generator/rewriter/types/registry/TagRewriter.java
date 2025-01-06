@@ -19,11 +19,13 @@ import org.bukkit.Keyed;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.EntityType;
+import org.jetbrains.annotations.ApiStatus;
 import org.jspecify.annotations.NullMarked;
 
 import static io.papermc.generator.utils.Formatting.quoted;
 
 @NullMarked
+@ApiStatus.Obsolete
 public class TagRewriter extends SearchReplaceRewriter {
 
     public record TagRegistry(String legacyFolderName, Class<? extends Keyed> apiType, ResourceKey<? extends Registry<?>> registryKey) { // TODO remove Keyed
@@ -70,7 +72,7 @@ public class TagRewriter extends SearchReplaceRewriter {
                 // tag field
                 String featureFlagName = Main.EXPERIMENTAL_TAGS.get(tagKey);
                 if (featureFlagName != null) {
-                    Annotations.experimentalAnnotations(builder, metadata.indent(), this.importCollector, SingleFlagHolder.fromVanillaName(featureFlagName));
+                    Annotations.experimentalAnnotations(builder, metadata.indent(), this.importCollector, SingleFlagHolder.fromName(featureFlagName));
                 }
 
                 builder.append(metadata.indent());

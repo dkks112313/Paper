@@ -17,7 +17,7 @@ public record SingleFlagHolder(FeatureFlag flag) implements FlagHolder { // todo
     private static final Map<String, FeatureFlag> FEATURE_FLAG_CACHE = new HashMap<>();
     private static final Map<FeatureFlag, ResourceLocation> FEATURE_FLAG_NAME = HashBiMap.create(FeatureFlags.REGISTRY.names).inverse();
 
-    public static SingleFlagHolder fromValue(FeatureFlag flag) {
+    static SingleFlagHolder fromValue(FeatureFlag flag) {
         return new SingleFlagHolder(flag);
     }
 
@@ -33,7 +33,7 @@ public record SingleFlagHolder(FeatureFlag flag) implements FlagHolder { // todo
         throw new IllegalStateException();
     }
 
-    public static SingleFlagHolder fromVanillaName(String name) {
+    public static SingleFlagHolder fromName(String name) {
         return fromValue(FEATURE_FLAG_CACHE.computeIfAbsent(name, key -> {
             return FeatureFlags.REGISTRY.names.get(ResourceLocation.withDefaultNamespace(key));
         }));

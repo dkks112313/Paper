@@ -237,15 +237,14 @@ tasks.check {
     dependsOn(scanJarForBadCalls)
 }
 
-val scanJarForOldGeneratedCode by tasks.registering(io.papermc.paperweight.tasks.ScanJarForOldGeneratedCode::class) {
-    mcVersion.set(providers.gradleProperty("mcVersion"))
-    annotation.set("Lio/papermc/paper/generated/GeneratedFrom;")
-    jarToScan.set(tasks.jar.flatMap { it.archiveFile })
-    classpath.from(configurations.compileClasspath)
-}
-tasks.check {
-    dependsOn(scanJarForOldGeneratedCode)
-    project.rootProject.findProject("paper-generator")?.let { // todo ideally should always run
-        dependsOn(it.tasks.findByPath("scanOldGeneratedSourceCode"))
+if (providers.gradleProperty("updatingMinecraft").getOrElse("false").toBoolean()) {
+    val scanJarForOldGeneratedCode by tasks.registering(io.papermc.paperweight.tasks.ScanJarForOldGeneratedCode::class) {
+        mcVersion.set(providers.gradleProperty("mcVersion"))
+        annotation.set("Lio/papermc/paper/generated/GeneratedFrom;")
+        jarToScan.set(tasks.jar.flatMap { it.archiveFile })
+        classpath.from(configurations.compileClasspath)
+    }
+    tasks.check {
+        dependsOn(scanJarForOldGeneratedCode)
     }
 }

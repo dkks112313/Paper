@@ -18,7 +18,6 @@ import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.tag.TagKey;
 import java.util.concurrent.atomic.AtomicBoolean;
 import net.kyori.adventure.key.Key;
-import net.minecraft.core.Registry;
 import org.jspecify.annotations.NullMarked;
 
 import static com.squareup.javapoet.TypeSpec.classBuilder;
@@ -73,10 +72,8 @@ public class GeneratedTagKeyType extends SimpleGenerator {
         TypeSpec.Builder typeBuilder = this.keyHolderType();
         MethodSpec.Builder createMethod = this.createMethod(tagKeyType);
 
-        Registry<?> registry = this.entry.registry();
-
         AtomicBoolean allExperimental = new AtomicBoolean(true);
-        registry.listTagIds().sorted(Formatting.alphabeticKeyOrder(tagKey -> tagKey.location().getPath())).forEach(tagKey -> {
+        this.entry.registry().listTagIds().sorted(Formatting.alphabeticKeyOrder(tagKey -> tagKey.location().getPath())).forEach(tagKey -> {
             String fieldName = Formatting.formatKeyAsField(tagKey.location().getPath());
             FieldSpec.Builder fieldBuilder = FieldSpec.builder(tagKeyType, fieldName, PUBLIC, STATIC, FINAL)
                 .initializer("$N(key($S))", createMethod.build(), tagKey.location().getPath())
@@ -84,7 +81,7 @@ public class GeneratedTagKeyType extends SimpleGenerator {
 
             String featureFlagName = Main.EXPERIMENTAL_TAGS.get(tagKey);
             if (featureFlagName != null) {
-                fieldBuilder.addAnnotations(experimentalAnnotations(SingleFlagHolder.fromVanillaName(featureFlagName)));
+                fieldBuilder.addAnnotations(experimentalAnnotations(SingleFlagHolder.fromName(featureFlagName)));
             } else {
                 allExperimental.set(false);
             }

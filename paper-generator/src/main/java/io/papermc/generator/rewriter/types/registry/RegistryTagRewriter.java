@@ -30,12 +30,12 @@ public class RegistryTagRewriter<T> extends SearchReplaceRewriter {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private final Registry<T> registry;
+    private final ResourceKey<? extends Registry<T>> registryKey;
     private final Class<? extends Keyed> apiClass;
     private final String fetchMethod = "getTag";
 
     public RegistryTagRewriter(ResourceKey<? extends Registry<T>> registryKey, Class<? extends Keyed> apiClass) {
-        this.registry = Main.REGISTRY_ACCESS.lookupOrThrow(registryKey);
+        this.registryKey = registryKey;
         this.apiClass = apiClass;
     }
 
@@ -46,7 +46,7 @@ public class RegistryTagRewriter<T> extends SearchReplaceRewriter {
             try {
                 holderClass.knownClass().getDeclaredMethod(this.fetchMethod, String.class);
             } catch (NoSuchMethodException e) {
-                LOGGER.error("Fetch method not found, skipping the rewriter for registry tag fields of {}", this.registry.key(), e);
+                LOGGER.error("Fetch method not found, skipping the rewriter for registry tag fields of {}", this.registryKey, e);
                 return false;
             }
         }
@@ -56,14 +56,15 @@ public class RegistryTagRewriter<T> extends SearchReplaceRewriter {
 
     @Override
     protected void insert(SearchMetadata metadata, StringBuilder builder) {
-        Iterator<? extends TagKey<T>> keyIterator = this.registry.listTagIds().sorted(Formatting.alphabeticKeyOrder(reference -> reference.location().getPath())).iterator();
+        Registry<T> registry = Main.REGISTRY_ACCESS.lookupOrThrow(this.registryKey);
+        Iterator<? extends TagKey<T>> keyIterator = registry.listTagIds().sorted(Formatting.alphabeticKeyOrder(reference -> reference.location().getPath())).iterator();
 
         while (keyIterator.hasNext()) {
             TagKey<T> tagKey = keyIterator.next();
 
             String featureFlagName = Main.EXPERIMENTAL_TAGS.get(tagKey);
             if (featureFlagName != null) {
-                Annotations.experimentalAnnotations(builder, metadata.indent(), this.importCollector, SingleFlagHolder.fromVanillaName(featureFlagName));
+                Annotations.experimentalAnnotations(builder, metadata.indent(), this.importCollector, SingleFlagHolder.fromName(featureFlagName));
             }
 
             builder.append(metadata.indent());
