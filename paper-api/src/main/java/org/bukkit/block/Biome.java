@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Biome extends OldEnum<Biome>, Keyed, net.kyori.adventure.translation.Translatable { // Paper - Adventure translations
 
+    // Paper start - Generated/Biome
     Biome OCEAN = getBiome("ocean");
     Biome PLAINS = getBiome("plains");
     Biome DESERT = getBiome("desert");
@@ -87,6 +88,7 @@ public interface Biome extends OldEnum<Biome>, Keyed, net.kyori.adventure.transl
     Biome JAGGED_PEAKS = getBiome("jagged_peaks");
     Biome STONY_PEAKS = getBiome("stony_peaks");
     Biome CHERRY_GROVE = getBiome("cherry_grove");
+    // Paper end - Generated/Biome
 
     /**
      * Represents a custom Biome

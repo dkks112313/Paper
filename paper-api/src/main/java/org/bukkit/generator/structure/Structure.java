@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class Structure implements Keyed {
 
+    // Paper start - Generated/Structure
     public static final Structure PILLAGER_OUTPOST = getStructure("pillager_outpost");
     public static final Structure MINESHAFT = getStructure("mineshaft");
     public static final Structure MINESHAFT_MESA = getStructure("mineshaft_mesa");
@@ -48,6 +49,7 @@ public abstract class Structure implements Keyed {
     public static final Structure ANCIENT_CITY = getStructure("ancient_city");
     public static final Structure TRAIL_RUINS = getStructure("trail_ruins");
     public static final Structure TRIAL_CHAMBERS = getStructure("trial_chambers");
+    // Paper end - Generated/Structure
 
     @NotNull
     private static Structure getStructure(@NotNull String name) {

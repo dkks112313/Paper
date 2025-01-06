@@ -74,12 +74,14 @@ public interface Sniffer extends Animals {
      * Represents the current state of the Sniffer.
      */
     public enum State {
+        // Paper start - Generated/SnifferState
         IDLING,
         FEELING_HAPPY,
         SCENTING,
         SNIFFING,
         SEARCHING,
         DIGGING,
-        RISING;
+        RISING
+        // Paper end - Generated/SnifferState
     }
 }

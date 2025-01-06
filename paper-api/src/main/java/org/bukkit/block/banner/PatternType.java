@@ -12,6 +12,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public interface PatternType extends OldEnum<PatternType>, Keyed {
+
+    // Paper start - Generated/PatternType
     PatternType BASE = getType("base");
     PatternType SQUARE_BOTTOM_LEFT = getType("square_bottom_left");
     PatternType SQUARE_BOTTOM_RIGHT = getType("square_bottom_right");
@@ -55,6 +57,7 @@ public interface PatternType extends OldEnum<PatternType>, Keyed {
     PatternType PIGLIN = getType("piglin");
     PatternType FLOW = getType("flow");
     PatternType GUSTER = getType("guster");
+    // Paper end - Generated/PatternType
 
     // Paper start - deprecate getKey
     /**

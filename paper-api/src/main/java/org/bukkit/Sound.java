@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Sound extends OldEnum<Sound>, Keyed, net.kyori.adventure.sound.Sound.Type { // Paper - implement Sound.Type
 
+    // Paper start - Generated/Sound
     Sound AMBIENT_BASALT_DELTAS_ADDITIONS = getSound("ambient.basalt_deltas.additions");
     Sound AMBIENT_BASALT_DELTAS_LOOP = getSound("ambient.basalt_deltas.loop");
     Sound AMBIENT_BASALT_DELTAS_MOOD = getSound("ambient.basalt_deltas.mood");
@@ -1673,6 +1674,7 @@ public interface Sound extends OldEnum<Sound>, Keyed, net.kyori.adventure.sound.
     Sound UI_TOAST_OUT = getSound("ui.toast.out");
     Sound WEATHER_RAIN = getSound("weather.rain");
     Sound WEATHER_RAIN_ABOVE = getSound("weather.rain.above");
+    // Paper end - Generated/Sound
 
     @NotNull
     private static Sound getSound(@NotNull String key) {

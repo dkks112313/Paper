@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Tag<T extends Keyed> extends Keyed {
 
+    // Paper start - Generated/Tag
     /**
      * Key for the built in block registry.
      */
@@ -53,11 +54,6 @@ public interface Tag<T extends Keyed> extends Keyed {
      * Vanilla block tag representing all colors of carpet.
      */
     Tag<Material> WOOL_CARPETS = Bukkit.getTag(REGISTRY_BLOCKS, NamespacedKey.minecraft("wool_carpets"), Material.class);
-    /**
-     * @deprecated {@link #WOOL_CARPETS}.
-     */
-    @Deprecated(since = "1.19")
-    Tag<Material> CARPETS = WOOL_CARPETS;
     /**
      * Vanilla block tag representing all wooden doors.
      */
@@ -828,23 +824,9 @@ public interface Tag<T extends Keyed> extends Keyed {
      */
     Tag<Material> ITEMS_PIGLIN_FOOD = Bukkit.getTag(REGISTRY_ITEMS, NamespacedKey.minecraft("piglin_food"), Material.class);
     /**
-     * Vanilla item tag representing all piglin food.
-     *
-     * @deprecated use {@link #ITEMS_PIGLIN_FOOD}
-     */
-    @Deprecated(since = "1.20.5")
-    Tag<Material> PIGLIN_FOOD = ITEMS_PIGLIN_FOOD;
-    /**
      * Vanilla item tag representing all fox food.
      */
     Tag<Material> ITEMS_FOX_FOOD = Bukkit.getTag(REGISTRY_ITEMS, NamespacedKey.minecraft("fox_food"), Material.class);
-    /**
-     * Vanilla item tag representing all fox food.
-     *
-     * @deprecated use {@link #ITEMS_FOX_FOOD}
-     */
-    @Deprecated(since = "1.20.5")
-    Tag<Material> FOX_FOOD = ITEMS_FOX_FOOD;
     /**
      * Vanilla item tag representing all cow food.
      */
@@ -1054,13 +1036,6 @@ public interface Tag<T extends Keyed> extends Keyed {
      */
     Tag<Material> ITEMS_STONE_CRAFTING_MATERIALS = Bukkit.getTag(REGISTRY_ITEMS, NamespacedKey.minecraft("stone_crafting_materials"), Material.class);
     /**
-     * Vanilla item tag representing all furnace materials.
-     *
-     * @deprecated partially replaced by {@link #ITEMS_STONE_CRAFTING_MATERIALS}
-     */
-    @Deprecated(since = "1.16.2", forRemoval = true)
-    Tag<Material> ITEMS_FURNACE_MATERIALS = ITEMS_STONE_CRAFTING_MATERIALS;
-    /**
      * Vanilla item tag representing all compasses.
      */
     Tag<Material> ITEMS_COMPASSES = Bukkit.getTag(REGISTRY_ITEMS, NamespacedKey.minecraft("compasses"), Material.class);
@@ -1137,15 +1112,6 @@ public interface Tag<T extends Keyed> extends Keyed {
      * Vanilla item tag representing all items which break decorated pots.
      */
     Tag<Material> ITEMS_BREAKS_DECORATED_POTS = Bukkit.getTag(REGISTRY_ITEMS, NamespacedKey.minecraft("breaks_decorated_pots"), Material.class);
-    /**
-     * Vanilla item tag representing all tools.
-     *
-     * @deprecated removed in Minecraft 1.20.5. Do not use. Will be removed at a later date. Until then,
-     * this constant now acts as a reference to {@link #ITEMS_BREAKS_DECORATED_POTS} which largely shares
-     * the same contents of the old "minecraft:tools" tag.
-     */
-    @Deprecated(since = "1.20.6", forRemoval = true)
-    Tag<Material> ITEMS_TOOLS = ITEMS_BREAKS_DECORATED_POTS;
     /**
      * Vanilla item tag representing all seeds plantable by villagers.
      */
@@ -1276,13 +1242,6 @@ public interface Tag<T extends Keyed> extends Keyed {
      */
     Tag<Material> FREEZE_IMMUNE_WEARABLES = Bukkit.getTag(REGISTRY_ITEMS, NamespacedKey.minecraft("freeze_immune_wearables"), Material.class);
     /**
-     * Vanilla item tag representing all items which tempt axolotls.
-     *
-     * @deprecated use {@link #ITEMS_AXOLOTL_FOOD}
-     */
-    @Deprecated(since = "1.20.5")
-    Tag<Material> AXOLOTL_TEMPT_ITEMS = ITEMS_AXOLOTL_FOOD;
-    /**
      * Vanilla item tag representing all items which are preferred for
      * harvesting clusters (unused).
      */
@@ -1364,12 +1323,6 @@ public interface Tag<T extends Keyed> extends Keyed {
      */
     Tag<EntityType> ENTITY_TYPES_DEFLECTS_PROJECTILES = Bukkit.getTag(REGISTRY_ENTITY_TYPES, NamespacedKey.minecraft("deflects_projectiles"), EntityType.class);
     /**
-     * Vanilla tag representing entities which deflect arrows.
-     * @deprecated use {@link #ENTITY_TYPES_DEFLECTS_PROJECTILES}
-     */
-    @Deprecated(since = "1.20.5")
-    Tag<EntityType> ENTITY_TYPES_DEFLECTS_ARROWS = ENTITY_TYPES_DEFLECTS_PROJECTILES;
-    /**
      * Vanilla tag representing entities which can turn in boats.
      */
     Tag<EntityType> ENTITY_TYPES_CAN_TURN_IN_BOATS = Bukkit.getTag(REGISTRY_ENTITY_TYPES, NamespacedKey.minecraft("can_turn_in_boats"), EntityType.class);
@@ -1434,7 +1387,6 @@ public interface Tag<T extends Keyed> extends Keyed {
      */
     Tag<EntityType> ENTITY_TYPES_REDIRECTABLE_PROJECTILE = Bukkit.getTag(REGISTRY_ENTITY_TYPES, NamespacedKey.minecraft("redirectable_projectile"), EntityType.class);
 
-    // Paper start
     String REGISTRY_GAME_EVENTS = "game_events";
 
     /**
@@ -1451,7 +1403,56 @@ public interface Tag<T extends Keyed> extends Keyed {
      * Tag for game events that an allay can listen to
      */
     Tag<GameEvent> GAME_EVENT_ALLAY_CAN_LISTEN = Bukkit.getTag(REGISTRY_GAME_EVENTS, NamespacedKey.minecraft("allay_can_listen"), GameEvent.class);
-    // Paper end
+    // Paper end - Generated/Tag
+
+    /**
+     * @deprecated {@link #WOOL_CARPETS}.
+     */
+    @Deprecated(since = "1.19")
+    Tag<Material> CARPETS = WOOL_CARPETS;
+    /**
+     * Vanilla item tag representing all piglin food.
+     *
+     * @deprecated use {@link #ITEMS_PIGLIN_FOOD}
+     */
+    @Deprecated(since = "1.20.5")
+    Tag<Material> PIGLIN_FOOD = ITEMS_PIGLIN_FOOD;
+    /**
+     * Vanilla item tag representing all fox food.
+     *
+     * @deprecated use {@link #ITEMS_FOX_FOOD}
+     */
+    @Deprecated(since = "1.20.5")
+    Tag<Material> FOX_FOOD = ITEMS_FOX_FOOD;
+    /**
+     * Vanilla item tag representing all furnace materials.
+     *
+     * @deprecated partially replaced by {@link #ITEMS_STONE_CRAFTING_MATERIALS}
+     */
+    @Deprecated(since = "1.16.2", forRemoval = true)
+    Tag<Material> ITEMS_FURNACE_MATERIALS = ITEMS_STONE_CRAFTING_MATERIALS;
+    /**
+     * Vanilla item tag representing all tools.
+     *
+     * @deprecated removed in Minecraft 1.20.5. Do not use. Will be removed at a later date. Until then,
+     * this constant now acts as a reference to {@link #ITEMS_BREAKS_DECORATED_POTS} which largely shares
+     * the same contents of the old "minecraft:tools" tag.
+     */
+    @Deprecated(since = "1.20.6", forRemoval = true)
+    Tag<Material> ITEMS_TOOLS = ITEMS_BREAKS_DECORATED_POTS;
+    /**
+     * Vanilla item tag representing all items which tempt axolotls.
+     *
+     * @deprecated use {@link #ITEMS_AXOLOTL_FOOD}
+     */
+    @Deprecated(since = "1.20.5")
+    Tag<Material> AXOLOTL_TEMPT_ITEMS = ITEMS_AXOLOTL_FOOD;
+    /**
+     * Vanilla tag representing entities which deflect arrows.
+     * @deprecated use {@link #ENTITY_TYPES_DEFLECTS_PROJECTILES}
+     */
+    @Deprecated(since = "1.20.5")
+    Tag<EntityType> ENTITY_TYPES_DEFLECTS_ARROWS = ENTITY_TYPES_DEFLECTS_PROJECTILES;
 
     /**
      * Returns whether or not this tag has an entry for the specified item.

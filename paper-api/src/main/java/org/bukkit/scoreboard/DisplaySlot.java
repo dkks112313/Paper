@@ -5,7 +5,7 @@ import net.kyori.adventure.text.format.NamedTextColor; // Paper
  * Locations for displaying objectives to the player
  */
 public enum DisplaySlot {
-    // Paper start
+    // Paper start - Generated/DisplaySlot
     BELOW_NAME("below_name"),
     PLAYER_LIST("list"),
     SIDEBAR("sidebar"),
@@ -25,6 +25,7 @@ public enum DisplaySlot {
     SIDEBAR_TEAM_LIGHT_PURPLE(NamedTextColor.LIGHT_PURPLE),
     SIDEBAR_TEAM_YELLOW(NamedTextColor.YELLOW),
     SIDEBAR_TEAM_WHITE(NamedTextColor.WHITE);
+    // Paper end - Generated/DisplaySlot
 
     public static final net.kyori.adventure.util.Index<String, DisplaySlot> NAMES = net.kyori.adventure.util.Index.create(DisplaySlot.class, DisplaySlot::getId);
 
@@ -51,5 +52,4 @@ public enum DisplaySlot {
     public String toString() {
         return this.id;
     }
-    // Paper end
 }

@@ -44,8 +44,9 @@ public final class MemoryKey<T> implements Keyed {
         return tClass;
     }
 
-    private static final Map<NamespacedKey, MemoryKey> MEMORY_KEYS = new HashMap<>();
-    //
+    private static final Map<NamespacedKey, MemoryKey<?>> MEMORY_KEYS = new HashMap<>();
+
+    // Paper start - Generated/MemoryKey
     public static final MemoryKey<Location> HOME = new MemoryKey<>(NamespacedKey.minecraft("home"), Location.class);
     public static final MemoryKey<Location> POTENTIAL_JOB_SITE = new MemoryKey<>(NamespacedKey.minecraft("potential_job_site"), Location.class);
     public static final MemoryKey<Location> JOB_SITE = new MemoryKey<>(NamespacedKey.minecraft("job_site"), Location.class);
@@ -69,6 +70,7 @@ public final class MemoryKey<T> implements Keyed {
     public static final MemoryKey<Location> LIKED_NOTEBLOCK_POSITION = new MemoryKey<>(NamespacedKey.minecraft("liked_noteblock"), Location.class);
     public static final MemoryKey<Integer> LIKED_NOTEBLOCK_COOLDOWN_TICKS = new MemoryKey<>(NamespacedKey.minecraft("liked_noteblock_cooldown_ticks"), Integer.class);
     public static final MemoryKey<Integer> ITEM_PICKUP_COOLDOWN_TICKS = new MemoryKey<>(NamespacedKey.minecraft("item_pickup_cooldown_ticks"), Integer.class);
+    // Paper end - Generated/MemoryKey
     /**
      * @deprecated this constant uses the wrong generic type, the sniffer now stores different positions
      * from possibly different worlds. Use the relevant methods in {@link org.bukkit.entity.Sniffer} directly
@@ -86,7 +88,7 @@ public final class MemoryKey<T> implements Keyed {
      * available under that key
      */
     @Nullable
-    public static MemoryKey getByKey(@NotNull NamespacedKey namespacedKey) {
+    public static MemoryKey<?> getByKey(@NotNull NamespacedKey namespacedKey) {
         return MEMORY_KEYS.get(namespacedKey);
     }
 
@@ -96,7 +98,7 @@ public final class MemoryKey<T> implements Keyed {
      * @return the memoryKeys
      */
     @NotNull
-    public static Set<MemoryKey> values() {
+    public static Set<MemoryKey<?>> values() {
         return new HashSet<>(MEMORY_KEYS.values());
     }
 }

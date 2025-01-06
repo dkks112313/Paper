@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class StructureType implements Keyed {
 
+    // Paper start - Generated/StructureType
     public static final StructureType BURIED_TREASURE = getStructureType("buried_treasure");
     public static final StructureType DESERT_PYRAMID = getStructureType("desert_pyramid");
     public static final StructureType END_CITY = getStructureType("end_city");
@@ -31,6 +32,7 @@ public abstract class StructureType implements Keyed {
     public static final StructureType STRONGHOLD = getStructureType("stronghold");
     public static final StructureType SWAMP_HUT = getStructureType("swamp_hut");
     public static final StructureType WOODLAND_MANSION = getStructureType("woodland_mansion");
+    // Paper end - Generated/StructureType
 
     @NotNull
     private static StructureType getStructureType(@NotNull String name) {

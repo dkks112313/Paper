@@ -201,6 +201,7 @@ public interface Panda extends Animals, Sittable {
 
     public enum Gene {
 
+        // Paper start - Generated/PandaGene
         NORMAL(false),
         LAZY(false),
         WORRIED(false),
@@ -208,6 +209,7 @@ public interface Panda extends Animals, Sittable {
         BROWN(true),
         WEAK(true),
         AGGRESSIVE(false);
+        // Paper end - Generated/PandaGene
 
         private final boolean recessive;
 

@@ -19,10 +19,12 @@ import org.bukkit.potion.PotionType;
 public class PaperFeatureFlagProviderImpl implements FeatureFlagProvider {
 
     public static final BiMap<FeatureFlag, net.minecraft.world.flag.FeatureFlag> FLAGS = ImmutableBiMap.of(
+        // Paper start - Generated/PaperFeatureFlagProviderImpl#FLAGS
         FeatureFlag.VANILLA, FeatureFlags.VANILLA,
         FeatureFlag.TRADE_REBALANCE, FeatureFlags.TRADE_REBALANCE,
         FeatureFlag.MINECART_IMPROVEMENTS, FeatureFlags.MINECART_IMPROVEMENTS,
         FeatureFlag.REDSTONE_EXPERIMENTS, FeatureFlags.REDSTONE_EXPERIMENTS
+        // Paper end - Generated/PaperFeatureFlagProviderImpl#FLAGS
     );
 
     @Override

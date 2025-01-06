@@ -46,6 +46,7 @@ public final class MapPalette {
 
     @NotNull
     static final Color[] colors = {
+        // Paper start - Generated/MapPalette#colors
         c(0, 0, 0, 0), c(0, 0, 0, 0), c(0, 0, 0, 0), c(0, 0, 0, 0),
         c(89, 125, 39), c(109, 153, 48), c(127, 178, 56), c(67, 94, 29),
         c(174, 164, 115), c(213, 201, 140), c(247, 233, 163), c(130, 123, 86),
@@ -108,6 +109,7 @@ public final class MapPalette {
         c(70, 70, 70), c(86, 86, 86), c(100, 100, 100), c(52, 52, 52),
         c(152, 123, 103), c(186, 150, 126), c(216, 175, 147), c(114, 92, 77),
         c(89, 117, 105), c(109, 144, 129), c(127, 167, 150), c(67, 88, 79)
+        // Paper end - Generated/MapPalette#colors
     };
 
     // Interface

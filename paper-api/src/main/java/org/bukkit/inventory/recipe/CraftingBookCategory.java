@@ -5,8 +5,10 @@ package org.bukkit.inventory.recipe;
  */
 public enum CraftingBookCategory {
 
+    // Paper start - Generated/CraftingBookCategory
     BUILDING,
     REDSTONE,
     EQUIPMENT,
-    MISC;
+    MISC
+    // Paper end - Generated/CraftingBookCategory
 }

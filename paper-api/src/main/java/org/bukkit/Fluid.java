@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Fluid extends OldEnum<Fluid>, Keyed {
 
+    // Paper start - Generated/Fluid
     /**
      * No fluid.
      */
@@ -31,6 +32,7 @@ public interface Fluid extends OldEnum<Fluid>, Keyed {
      * Flowing lava.
      */
     Fluid FLOWING_LAVA = getFluid("flowing_lava");
+    // Paper end - Generated/Fluid
 
     @NotNull
     private static Fluid getFluid(@NotNull String key) {

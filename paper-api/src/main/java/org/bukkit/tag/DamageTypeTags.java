@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @ApiStatus.Experimental
 public final class DamageTypeTags {
 
+    // Paper start - Generated/DamageTypeTags
     /**
      * Vanilla tag representing damage types which damage helmets.
      */
@@ -154,6 +155,7 @@ public final class DamageTypeTags {
      * Vanilla tag representing damage types which originate from mace smashes.
      */
     public static final Tag<DamageType> IS_MACE_SMASH = getTag("mace_smash");
+    // Paper end - Generated/DamageTypeTags
     /**
      * Internal use only.
      */

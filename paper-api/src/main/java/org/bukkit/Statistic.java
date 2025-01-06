@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
  * Represents a countable statistic, which is tracked by the server.
  */
 public enum Statistic implements Keyed {
+    // Paper start - Generated/StatisticCustom
     DAMAGE_DEALT,
     DAMAGE_TAKEN,
     DEATHS,
@@ -92,7 +93,10 @@ public enum Statistic implements Keyed {
     INTERACT_WITH_GRINDSTONE,
     TARGET_HIT,
     INTERACT_WITH_SMITHING_TABLE,
+    // Paper end - Generated/StatisticCustom
+    // Paper start - Generated/StatisticType
     STRIDER_ONE_CM;
+    // Paper end - Generated/StatisticType
 
     private final Type type;
     private final NamespacedKey key;

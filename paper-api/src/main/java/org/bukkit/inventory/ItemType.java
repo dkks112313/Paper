@@ -89,6 +89,7 @@ public interface ItemType extends Keyed, Translatable, net.kyori.adventure.trans
     }
 
     //<editor-fold desc="ItemTypes" defaultstate="collapsed">
+    // Paper start - Generated/ItemType
     /**
      * Air does not have any ItemMeta
      */
@@ -2221,6 +2222,7 @@ public interface ItemType extends Keyed, Translatable, net.kyori.adventure.trans
      * ItemMeta: {@link OminousBottleMeta}
      */
     ItemType.Typed<OminousBottleMeta> OMINOUS_BOTTLE = getItemType("ominous_bottle");
+    // Paper end - Generated/ItemType
     //</editor-fold>
 
     @NotNull

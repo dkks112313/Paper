@@ -93,16 +93,16 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-val generatedApiPath: java.nio.file.Path = rootProject.projectDir.toPath().resolve("paper-api-generator/generated")
+val generatedApiDir: java.nio.file.Path = rootProject.projectDir.toPath().resolve("paper-generator/generatedApi")
 idea {
     module {
-        generatedSourceDirs.add(generatedApiPath.toFile())
+        generatedSourceDirs.add(generatedApiDir.toFile())
     }
 }
 sourceSets {
     main {
         java {
-            srcDir(generatedApiPath)
+            srcDir(generatedApiDir)
         }
     }
 }
@@ -237,7 +237,7 @@ tasks.check {
     dependsOn(scanJar)
 }
 
-val scanJarForOldGeneratedCode = tasks.register("scanJarForOldGeneratedCode", io.papermc.paperweight.tasks.ScanJarForOldGeneratedCode::class) {
+val scanJarForOldGeneratedCode = tasks.registering(io.papermc.paperweight.tasks.ScanJarForOldGeneratedCode::class) {
     mcVersion.set(providers.gradleProperty("mcVersion"))
     annotation.set("Lio/papermc/paper/generated/GeneratedFrom;")
     jarToScan.set(tasks.jar.flatMap { it.archiveFile })
@@ -245,4 +245,5 @@ val scanJarForOldGeneratedCode = tasks.register("scanJarForOldGeneratedCode", io
 }
 tasks.check {
     dependsOn(scanJarForOldGeneratedCode)
+    dependsOn(":paper-generator:scanOldGeneratedSourceCode")
 }

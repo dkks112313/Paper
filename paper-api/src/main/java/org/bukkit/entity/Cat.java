@@ -52,6 +52,7 @@ public interface Cat extends Tameable, Sittable, io.papermc.paper.entity.CollarC
      */
     interface Type extends OldEnum<Type>, Keyed {
 
+        // Paper start - Generated/CatType
         Type TABBY = getType("tabby");
         Type BLACK = getType("black");
         Type RED = getType("red");
@@ -63,6 +64,7 @@ public interface Cat extends Tameable, Sittable, io.papermc.paper.entity.CollarC
         Type WHITE = getType("white");
         Type JELLIE = getType("jellie");
         Type ALL_BLACK = getType("all_black");
+        // Paper end - Generated/CatType
 
         @NotNull
         private static Type getType(@NotNull String key) {

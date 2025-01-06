@@ -183,6 +183,7 @@ public interface BlockType extends Keyed, Translatable, net.kyori.adventure.tran
     }
 
     //<editor-fold desc="BlockTypes" defaultstate="collapsed">
+    // Paper start - Generated/BlockType
     BlockType.Typed<BlockData> AIR = getBlockType("air");
     BlockType.Typed<BlockData> STONE = getBlockType("stone");
     BlockType.Typed<BlockData> GRANITE = getBlockType("granite");
@@ -3417,6 +3418,7 @@ public interface BlockType extends Keyed, Translatable, net.kyori.adventure.tran
     BlockType.Typed<BlockData> CLOSED_EYEBLOSSOM = getBlockType("closed_eyeblossom");
     BlockType.Typed<BlockData> POTTED_OPEN_EYEBLOSSOM = getBlockType("potted_open_eyeblossom");
     BlockType.Typed<BlockData> POTTED_CLOSED_EYEBLOSSOM = getBlockType("potted_closed_eyeblossom");
+    // Paper end - Generated/BlockType
     //</editor-fold>
 
     @NotNull

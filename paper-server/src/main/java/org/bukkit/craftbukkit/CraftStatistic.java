@@ -20,6 +20,7 @@ import org.bukkit.craftbukkit.inventory.CraftItemType;
 import org.bukkit.entity.EntityType;
 
 public enum CraftStatistic {
+    // Paper start - Generated/CraftStatisticCustom
     DAMAGE_DEALT(Stats.DAMAGE_DEALT),
     DAMAGE_TAKEN(Stats.DAMAGE_TAKEN),
     DEATHS(Stats.DEATHS),
@@ -102,7 +103,10 @@ public enum CraftStatistic {
     INTERACT_WITH_GRINDSTONE(Stats.INTERACT_WITH_GRINDSTONE),
     TARGET_HIT(Stats.TARGET_HIT),
     INTERACT_WITH_SMITHING_TABLE(Stats.INTERACT_WITH_SMITHING_TABLE),
+    // Paper end - Generated/CraftStatisticCustom
+    // Paper start - Generated/CraftStatisticType
     STRIDER_ONE_CM(Stats.STRIDER_ONE_CM);
+    // Paper end - Generated/CraftStatisticType
     private final ResourceLocation minecraftKey;
     private final org.bukkit.Statistic bukkit;
     private static final BiMap<ResourceLocation, org.bukkit.Statistic> statistics;

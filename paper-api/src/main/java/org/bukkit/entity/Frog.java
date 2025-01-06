@@ -50,6 +50,7 @@ public interface Frog extends Animals {
      */
     interface Variant extends OldEnum<Variant>, Keyed {
 
+        // Paper start - Generated/FrogVariant
         /**
          * Temperate (brown-orange) frog.
          */
@@ -62,6 +63,7 @@ public interface Frog extends Animals {
          * Cold (green) frog.
          */
         Variant COLD = getVariant("cold");
+        // Paper end - Generated/FrogVariant
 
         @NotNull
         private static Variant getVariant(@NotNull String key) {

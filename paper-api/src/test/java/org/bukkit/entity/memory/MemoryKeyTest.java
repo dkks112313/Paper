@@ -10,7 +10,7 @@ public class MemoryKeyTest {
 
     @Test
     public void shouldContainAllMemories() {
-        List<MemoryKey> memories = Arrays.asList(MemoryKey.HOME, MemoryKey.JOB_SITE, MemoryKey.MEETING_POINT);
+        List<MemoryKey<?>> memories = Arrays.asList(MemoryKey.HOME, MemoryKey.JOB_SITE, MemoryKey.MEETING_POINT);
         assertTrue(MemoryKey.values().containsAll(memories));
     }
 

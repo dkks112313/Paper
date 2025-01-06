@@ -4,9 +4,11 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import java.util.Locale;
 import org.bukkit.Keyed;
+import org.bukkit.MinecraftExperimental;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.util.OldEnum;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -287,6 +289,7 @@ public final class MapCursor {
      */
     public interface Type extends OldEnum<Type>, Keyed {
 
+        // Paper start - Generated/MapCursorType
         Type PLAYER = getType("player");
         Type FRAME = getType("frame");
         Type RED_MARKER = getType("red_marker");
@@ -314,28 +317,29 @@ public final class MapCursor {
         Type BANNER_RED = getType("banner_red");
         Type BANNER_BLACK = getType("banner_black");
         Type RED_X = getType("red_x");
-        @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE) // Paper - add missing annotation
-        @org.jetbrains.annotations.ApiStatus.Experimental // Paper - add missing annotation
+        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
+        @ApiStatus.Experimental
         Type VILLAGE_DESERT = getType("village_desert");
-        @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE) // Paper - add missing annotation
-        @org.jetbrains.annotations.ApiStatus.Experimental // Paper - add missing annotation
+        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
+        @ApiStatus.Experimental
         Type VILLAGE_PLAINS = getType("village_plains");
-        @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE) // Paper - add missing annotation
-        @org.jetbrains.annotations.ApiStatus.Experimental // Paper - add missing annotation
+        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
+        @ApiStatus.Experimental
         Type VILLAGE_SAVANNA = getType("village_savanna");
-        @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE) // Paper - add missing annotation
-        @org.jetbrains.annotations.ApiStatus.Experimental // Paper - add missing annotation
+        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
+        @ApiStatus.Experimental
         Type VILLAGE_SNOWY = getType("village_snowy");
-        @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE) // Paper - add missing annotation
-        @org.jetbrains.annotations.ApiStatus.Experimental // Paper - add missing annotation
+        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
+        @ApiStatus.Experimental
         Type VILLAGE_TAIGA = getType("village_taiga");
-        @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE) // Paper - add missing annotation
-        @org.jetbrains.annotations.ApiStatus.Experimental // Paper - add missing annotation
+        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
+        @ApiStatus.Experimental
         Type JUNGLE_TEMPLE = getType("jungle_temple");
-        @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE) // Paper - add missing annotation
-        @org.jetbrains.annotations.ApiStatus.Experimental // Paper - add missing annotation
+        @MinecraftExperimental(MinecraftExperimental.Requires.TRADE_REBALANCE)
+        @ApiStatus.Experimental
         Type SWAMP_HUT = getType("swamp_hut");
         Type TRIAL_CHAMBERS = getType("trial_chambers");
+        // Paper end - Generated/MapCursorType
 
         @NotNull
         private static Type getType(@NotNull String key) {
@@ -348,7 +352,7 @@ public final class MapCursor {
          * @return the value
          * @apiNote Internal Use Only
          */
-        @org.jetbrains.annotations.ApiStatus.Internal // Paper
+        @ApiStatus.Internal // Paper
         byte getValue();
 
         /**
@@ -358,7 +362,7 @@ public final class MapCursor {
          * @return the matching type
          * @apiNote Internal Use Only
          */
-        @org.jetbrains.annotations.ApiStatus.Internal // Paper
+        @ApiStatus.Internal // Paper
         @Nullable
         static Type byValue(byte value) {
             for (Type t : values()) {
@@ -373,7 +377,7 @@ public final class MapCursor {
          * @deprecated only for backwards compatibility, use {@link Registry#get(NamespacedKey)} instead.
          */
         @NotNull
-        @Deprecated(since = "1.21", forRemoval = true) @org.jetbrains.annotations.ApiStatus.ScheduledForRemoval(inVersion = "1.22") // Paper - will be removed via asm-utils
+        @Deprecated(since = "1.21", forRemoval = true) @ApiStatus.ScheduledForRemoval(inVersion = "1.22") // Paper - will be removed via asm-utils
         static Type valueOf(@NotNull String name) {
             Type type = Registry.MAP_DECORATION_TYPE.get(NamespacedKey.fromString(name.toLowerCase(Locale.ROOT)));
             Preconditions.checkArgument(type != null, "No Type found with the name %s", name);
@@ -385,7 +389,7 @@ public final class MapCursor {
          * @deprecated use {@link Registry#iterator()}.
          */
         @NotNull
-        @Deprecated(since = "1.21", forRemoval = true) @org.jetbrains.annotations.ApiStatus.ScheduledForRemoval(inVersion = "1.22") // Paper - will be removed via asm-utils
+        @Deprecated(since = "1.21", forRemoval = true) @ApiStatus.ScheduledForRemoval(inVersion = "1.22") // Paper - will be removed via asm-utils
         static Type[] values() {
             return Lists.newArrayList(Registry.MAP_DECORATION_TYPE).toArray(new Type[0]);
         }

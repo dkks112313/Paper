@@ -5,6 +5,7 @@ import java.time.Instant
 plugins {
     `java-library`
     `maven-publish`
+    idea
     id("io.papermc.paperweight.core")
 }
 
@@ -251,6 +252,30 @@ tasks.test {
     val provider = objects.newInstance<MockitoAgentProvider>()
     provider.fileCollection.from(mockitoAgent)
     jvmArgumentProviders.add(provider)
+}
+
+val generatedServerDir: java.nio.file.Path = rootProject.projectDir.toPath().resolve("paper-generator/generatedServer")
+idea {
+    module {
+        generatedSourceDirs.add(generatedServerDir.toFile())
+    }
+}
+sourceSets {
+    main {
+        java {
+            srcDir(generatedServerDir)
+        }
+    }
+}
+
+val scanJarForOldGeneratedCode by tasks.registering(io.papermc.paperweight.tasks.ScanJarForOldGeneratedCode::class) {
+    mcVersion.set(providers.gradleProperty("mcVersion"))
+    annotation.set("Lio/papermc/paper/generated/GeneratedFrom;")
+    jarToScan.set(tasks.jar.flatMap { it.archiveFile })
+    classpath.from(configurations.compileClasspath)
+}
+tasks.check {
+    dependsOn(scanJarForOldGeneratedCode)
 }
 
 fun TaskContainer.registerRunTask(

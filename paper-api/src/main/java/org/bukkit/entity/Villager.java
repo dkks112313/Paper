@@ -171,6 +171,7 @@ public interface Villager extends AbstractVillager {
      */
     interface Type extends OldEnum<Type>, Keyed {
 
+        // Paper start - Generated/VillagerType
         Type DESERT = getType("desert");
         Type JUNGLE = getType("jungle");
         Type PLAINS = getType("plains");
@@ -178,6 +179,7 @@ public interface Villager extends AbstractVillager {
         Type SNOW = getType("snow");
         Type SWAMP = getType("swamp");
         Type TAIGA = getType("taiga");
+        // Paper end - Generated/VillagerType
 
         @NotNull
         private static Type getType(@NotNull String key) {
@@ -214,6 +216,7 @@ public interface Villager extends AbstractVillager {
      */
     interface Profession extends OldEnum<Profession>, Keyed, net.kyori.adventure.translation.Translatable {
 
+        // Paper start - Generated/VillagerProfession
         Profession NONE = getProfession("none");
         /**
          * Armorer profession. Wears a black apron. Armorers primarily trade for
@@ -285,6 +288,7 @@ public interface Villager extends AbstractVillager {
          * trade for iron and diamond weapons, sometimes enchanted.
          */
         Profession WEAPONSMITH = getProfession("weaponsmith");
+        // Paper end - Generated/VillagerProfession
 
         @NotNull
         private static Profession getProfession(@NotNull String key) {

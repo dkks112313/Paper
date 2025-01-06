@@ -138,7 +138,8 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings({"DeprecatedIsStillUsed", "deprecation"}) // Paper
 public enum Material implements Keyed, Translatable, net.kyori.adventure.translation.Translatable { // Paper
     //<editor-fold desc="Materials" defaultstate="collapsed">
-    AIR(9648, 64), // Paper - air stacks to 64
+    // Paper start - Generated/Items
+    AIR(9648, 64),
     STONE(22948),
     GRANITE(21091),
     POLISHED_GRANITE(5477),
@@ -3814,6 +3815,9 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
     POTTED_FLOWERING_AZALEA_BUSH(10609),
     POTTED_OPEN_EYEBLOSSOM(24999),
     POTTED_CLOSED_EYEBLOSSOM(16694),
+    // Paper end - Generated/Items
+    // Paper start - Generated/Blocks
+    // Paper end - Generated/Blocks
     // ----- Legacy Separator -----
     @Deprecated(since = "1.13")
     LEGACY_AIR(0, 0),
@@ -5174,6 +5178,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
         }
         switch (this) {
             //<editor-fold defaultstate="collapsed" desc="isTransparent">
+            // Paper start - Generated/Material#isTransparent
             case ACACIA_BUTTON:
             case ACACIA_SAPLING:
             case ACTIVATOR_RAIL:
@@ -5301,6 +5306,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
             case YELLOW_CARPET:
             case ZOMBIE_HEAD:
             case ZOMBIE_WALL_HEAD:
+            // Paper end - Generated/Material#isTransparent
             // ----- Legacy Separator -----
             case LEGACY_AIR:
             case LEGACY_SAPLING:
@@ -5531,6 +5537,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
         Preconditions.checkArgument(isItem(), "The Material is not an item!");
         switch (this) {
             // <editor-fold defaultstate="collapsed" desc="getEquipmentSlot">
+            // Paper start - Generated/Material#getEquipmentSlot
             case CARVED_PUMPKIN:
             case CHAINMAIL_HELMET:
             case CREEPER_HEAD:
@@ -5595,6 +5602,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
                 return EquipmentSlot.BODY;
             default:
                 return EquipmentSlot.HAND;
+            // Paper end - Generated/Material#getEquipmentSlot
             // </editor-fold>
         }
     }

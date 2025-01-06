@@ -45,7 +45,7 @@ import org.jetbrains.annotations.Nullable;
 
 public enum EntityType implements Keyed, Translatable, net.kyori.adventure.translation.Translatable, io.papermc.paper.world.flag.FeatureDependant { // Paper - translatable
 
-    // These strings MUST match the strings in nms.EntityTypes and are case sensitive.
+    // Paper start - Generated/EntityType
     /**
      * An item resting on the ground.
      * <p>
@@ -338,6 +338,7 @@ public enum EntityType implements Keyed, Translatable, net.kyori.adventure.trans
      */
     LIGHTNING_BOLT("lightning_bolt", LightningStrike.class, -1),
     PLAYER("player", Player.class, -1, false),
+    // Paper end - Generated/EntityType
     /**
      * An unknown entity without an Entity Class
      */

@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Attribute extends OldEnum<Attribute>, Keyed, Translatable, net.kyori.adventure.translation.Translatable { // Paper - Adventure translations
 
+    // Paper start - Generated/Attribute
     /**
      * Maximum health of an Entity.
      */
@@ -144,6 +145,7 @@ public interface Attribute extends OldEnum<Attribute>, Keyed, Translatable, net.
      * Chance of a zombie to spawn reinforcements.
      */
     Attribute SPAWN_REINFORCEMENTS = getAttribute("spawn_reinforcements");
+    // Paper end - Generated/Attribute
 
     @NotNull
     private static Attribute getAttribute(@NotNull String key) {

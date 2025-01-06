@@ -63,6 +63,7 @@ import static java.util.Objects.requireNonNull;
 @ApiStatus.Experimental
 public final class DataComponentTypes {
 
+    // Paper start - Generated/DataComponentTypes
     /**
      * Controls the maximum stacking size of this item.
      * <br>
@@ -158,10 +159,6 @@ public final class DataComponentTypes {
      * If not present, has an implicit default value of: {@code 0}.
      */
     public static final DataComponentType.Valued<@NonNegative Integer> REPAIR_COST = valued("repair_cost");
-    // /**
-    //  * Causes an item to not be pickable in the creative menu, currently not very useful.
-    //  */
-    // public static final DataComponentType.NonValued CREATIVE_SLOT_LOCK = unvalued("creative_slot_lock");
     /**
      * Overrides the enchantment glint effect on an item.
      * If not present, default behaviour is used.
@@ -259,10 +256,6 @@ public final class DataComponentTypes {
      * Holds the trims applied to an item in recipes
      */
     public static final DataComponentType.Valued<ItemArmorTrim> TRIM = valued("trim");
-    // debug_stick_state - Block Property API
-    // entity_data
-    // bucket_entity_data
-    // block_entity_data
     /**
      * Holds the instrument type used by a Goat Horn.
      */
@@ -316,6 +309,19 @@ public final class DataComponentTypes {
      * Holds block state properties to apply when placing a block.
      */
     public static final DataComponentType.Valued<BlockItemDataProperties> BLOCK_DATA = valued("block_state");
+    /**
+     * Holds the unresolved loot table and seed of a container-like block.
+     */
+    public static final DataComponentType.Valued<SeededContainerLoot> CONTAINER_LOOT = valued("container_loot");
+    // Paper end - Generated/DataComponentTypes
+    // /**
+    //  * Causes an item to not be pickable in the creative menu, currently not very useful.
+    //  */
+    // public static final DataComponentType.NonValued CREATIVE_SLOT_LOCK = unvalued("creative_slot_lock");
+    // debug_stick_state - Block Property API
+    // entity_data
+    // bucket_entity_data
+    // block_entity_data
     // bees
     // /**
     //  * Holds the lock state of a container-like block,
@@ -325,10 +331,6 @@ public final class DataComponentTypes {
     //  * to open this container.
     //  */
     // public static final DataComponentType.Valued<LockCode> LOCK = valued("lock");
-    /**
-     * Holds the unresolved loot table and seed of a container-like block.
-     */
-    public static final DataComponentType.Valued<SeededContainerLoot> CONTAINER_LOOT = valued("container_loot");
 
     private static DataComponentType.NonValued unvalued(final String name) {
         return (DataComponentType.NonValued) requireNonNull(Registry.DATA_COMPONENT_TYPE.get(NamespacedKey.minecraft(name)), name + " unvalued data component type couldn't be found, this is a bug.");

@@ -89,8 +89,10 @@ public interface Fox extends Animals, Sittable {
      * Represents the various different fox types there are.
      */
     public enum Type {
+        // Paper start - Generated/FoxType
         RED,
-        SNOW;
+        SNOW
+        // Paper end - Generated/FoxType
     }
 
     // Paper start - Add more fox behavior API
