@@ -7,14 +7,14 @@ import org.bukkit.entity.Mob;
 /**
  * Wraps vanilla in api
  */
-public class PaperVanillaGoal<T extends Mob> implements VanillaGoal<T> {
+public class PaperGoal<T extends Mob> implements com.destroystokyo.paper.entity.ai.Goal<T> {
 
     private final Goal handle;
     private final GoalKey<T> key;
 
     private final EnumSet<GoalType> types;
 
-    public PaperVanillaGoal(Goal handle) {
+    public PaperGoal(Goal handle) {
         this.handle = handle;
         this.key = MobGoalHelper.getKey(handle.getClass());
         this.types = MobGoalHelper.vanillaToPaper(handle);

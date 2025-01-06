@@ -11,10 +11,10 @@ public enum ItemRarity {
 
     // Paper start - Generated/ItemRarity
     // @GeneratedFrom 1.21.4
-    COMMON(net.kyori.adventure.text.format.NamedTextColor.WHITE),
-    UNCOMMON(net.kyori.adventure.text.format.NamedTextColor.YELLOW),
-    RARE(net.kyori.adventure.text.format.NamedTextColor.AQUA),
-    EPIC(net.kyori.adventure.text.format.NamedTextColor.LIGHT_PURPLE);
+    COMMON(NamedTextColor.WHITE),
+    UNCOMMON(NamedTextColor.YELLOW),
+    RARE(NamedTextColor.AQUA),
+    EPIC(NamedTextColor.LIGHT_PURPLE);
     // Paper end - Generated/ItemRarity
 
     // Paper start - improve ItemRarity

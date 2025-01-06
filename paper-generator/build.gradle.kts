@@ -32,6 +32,7 @@ val generatedApiPath = layout.projectDirectory.dir("generatedApi")
 val generatedServerPath = layout.projectDirectory.dir("generatedServer")
 
 tasks.register<JavaExec>("generate") {
+    group = "generation"
     dependsOn(tasks.check)
     mainClass.set("io.papermc.generator.Main")
     classpath(sourceSets.main.map { it.runtimeClasspath })
@@ -44,6 +45,7 @@ tasks.register<JavaExec>("generate") {
 }
 
 tasks.register<JavaExec>("scanOldGeneratedSourceCode") {
+    group = "generation"
     mainClass.set("io.papermc.generator.rewriter.OldGeneratedCodeTest")
     classpath(sourceSets.test.map { it.runtimeClasspath })
     args(project(":paper-api").sourceSets["main"].java.srcDirs.first().toString(),

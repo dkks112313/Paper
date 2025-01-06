@@ -118,7 +118,7 @@ public final class Rewriters {
                 @Override
                 protected EnumValue.Builder rewriteEnumValue(Rarity rarity) {
                     return super.rewriteEnumValue(rarity).argument(
-                        "%s.%s".formatted(NamedTextColor.class.getCanonicalName(), rarity.color().name())
+                        "%s.%s".formatted(NamedTextColor.class.getSimpleName(), rarity.color().name())
                     );
                 }
             })

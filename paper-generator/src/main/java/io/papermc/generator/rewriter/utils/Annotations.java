@@ -12,7 +12,7 @@ import org.jspecify.annotations.NullMarked;
 public final class Annotations {
 
     public static String annotation(Class<? extends Annotation> clazz, ImportCollector collector) {
-        return "@%s".formatted(collector.getShortName(clazz, false)); // todo toggle the flag after the spoon
+        return "@%s".formatted(collector.getShortName(clazz));
     }
 
     public static String annotationStyle(Class<? extends Annotation> clazz) {

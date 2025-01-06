@@ -1,6 +1,5 @@
 package org.bukkit.scoreboard;
 
-import net.kyori.adventure.text.format.NamedTextColor; // Paper
 /**
  * Locations for displaying objectives to the player
  */
@@ -34,10 +33,6 @@ public enum DisplaySlot {
 
     DisplaySlot(@org.jetbrains.annotations.NotNull String id) {
         this.id = id;
-    }
-
-    DisplaySlot(@org.jetbrains.annotations.NotNull NamedTextColor color) {
-        this.id = "sidebar.team." + color;
     }
 
     /**

@@ -245,5 +245,7 @@ val scanJarForOldGeneratedCode by tasks.registering(io.papermc.paperweight.tasks
 }
 tasks.check {
     dependsOn(scanJarForOldGeneratedCode)
-    dependsOn(":paper-generator:scanOldGeneratedSourceCode")
+    project.rootProject.findProject("paper-generator")?.let { // todo ideally should always run
+        dependsOn(it.tasks.findByPath("scanOldGeneratedSourceCode"))
+    }
 }

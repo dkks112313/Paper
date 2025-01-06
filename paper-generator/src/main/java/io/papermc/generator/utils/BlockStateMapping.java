@@ -317,13 +317,6 @@ public final class BlockStateMapping {
         .put(VaultState.class, Vault.State.class)
         .buildOrThrow();
 
-    /*
-    TODO:
-    clear paper api list now generated/remove patches not needed anymore
-    remove some patches:
-      - Add-missing-block-data-API
-    remove scrap of old spigot tooling (archetype)
-     */
     public static @Nullable Class<? extends org.bukkit.block.data.BlockData> getBestSuitedApiClass(Class<?> block) {
         if (!MAPPING.containsKey(block)) {
             return null;

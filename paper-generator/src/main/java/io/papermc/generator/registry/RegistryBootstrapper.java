@@ -26,7 +26,7 @@ public class RegistryBootstrapper {
             }
         });
 
-        // todo remove
+        // todo remove once entity type is a registry
         generators.add(new GeneratedTagKeyType(RegistryEntries.byRegistryKey(Registries.ENTITY_TYPE), PAPER_REGISTRY_PACKAGE + ".keys.tags"));
     }
 
