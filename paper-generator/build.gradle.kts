@@ -1,4 +1,3 @@
-import io.papermc.paperweight.util.capitalized
 import io.papermc.paperweight.util.defaultJavaLauncher
 
 plugins {
@@ -96,7 +95,7 @@ fun TaskContainer.registerGenerationTask(
     block: JavaExec.() -> Unit
 ): TaskProvider<JavaExec> = register<JavaExec>(name) {
     group = "generation"
-    dependsOn("checkModuleFor${name.capitalized()}")
+    dependsOn(project.tasks.check)
     javaLauncher = project.javaToolchains.defaultJavaLauncher(project)
     inputs.property("gameVersion", gameVersion)
     inputs.dir(layout.projectDirectory.dir("src/main/java")).withPathSensitivity(PathSensitivity.RELATIVE)
@@ -120,24 +119,6 @@ fun TaskContainer.registerGenerationTask(
 
 tasks.test {
     useJUnitPlatform()
-}
-
-val test by testing.suites.existing(JvmTestSuite::class)
-sequenceOf("api", "impl").forEach { side ->
-    sequenceOf("generate", "rewrite").forEach { type ->
-        val task = tasks.register<Test>("checkModuleFor${type.capitalized()}${side.capitalized()}") {
-            group = "verification"
-            javaLauncher = project.javaToolchains.defaultJavaLauncher(project)
-            useJUnitPlatform {
-                includeTags("$type-$side") // todo skip when no test found
-            }
-            testClassesDirs = files(test.map { it.sources.output.classesDirs })
-            classpath = files(test.map { it.sources.runtimeClasspath })
-        }
-        tasks.check {
-            dependsOn(task)
-        }
-    }
 }
 
 group = "io.papermc.paper"

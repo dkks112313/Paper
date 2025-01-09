@@ -1,6 +1,9 @@
 import io.papermc.paperweight.attribute.DevBundleOutput
 import io.papermc.paperweight.util.*
+import io.papermc.paperweight.util.data.FileEntry
+import paper.libs.com.google.gson.annotations.SerializedName
 import java.time.Instant
+import kotlin.io.path.readText
 
 plugins {
     `java-library`
@@ -49,6 +52,30 @@ tasks.generateDevelopmentBundle {
         "https://repo.maven.apache.org/maven2/",
         paperMavenPublicUrl,
     )
+}
+
+data class PackVersion(
+    val data: Double,
+    val resource: Double
+)
+
+data class Version(
+    @SerializedName("pack_version")
+    val packVersion: PackVersion
+)
+
+tasks.processResources {
+    val packVersion: Provider<Int> = tasks.extractFromBundler.flatMap { it.serverJar }.map taskScope@{
+        it.path.openZip().use { fs ->
+            return@taskScope gson.fromJson(fs.getPath(FileEntry.VERSION_JSON).readText(), Version::class.java).packVersion.data.toInt()
+        }
+    }
+    inputs.property("version", packVersion)
+    filesMatching("data/minecraft/datapacks/paper/pack.mcmeta") {
+        expand(mapOf(
+            "version" to packVersion.get()
+        ))
+    }
 }
 
 abstract class Services {

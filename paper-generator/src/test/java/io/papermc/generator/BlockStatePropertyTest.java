@@ -20,10 +20,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-@Tag("generate-impl")
 public class BlockStatePropertyTest {
 
     private static Set<Class<? extends Comparable<?>>> ENUM_PROPERTY_VALUES;

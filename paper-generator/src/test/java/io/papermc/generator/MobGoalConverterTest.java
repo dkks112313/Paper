@@ -7,13 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Tag("generate-api")
 public class MobGoalConverterTest {
 
     @Test
