@@ -45,7 +45,7 @@ import org.jetbrains.annotations.Nullable;
 
 public enum EntityType implements Keyed, Translatable, net.kyori.adventure.translation.Translatable, io.papermc.paper.world.flag.FeatureDependant { // Paper - translatable
 
-    // Paper start - Generated/EntityType
+    // Start generate - EntityType
     // @GeneratedFrom 1.21.4
     ACACIA_BOAT("acacia_boat", AcaciaBoat.class, -1),
     ACACIA_CHEST_BOAT("acacia_chest_boat", AcaciaChestBoat.class, -1),
@@ -196,7 +196,7 @@ public enum EntityType implements Keyed, Translatable, net.kyori.adventure.trans
     ZOMBIE_HORSE("zombie_horse", ZombieHorse.class, 29),
     ZOMBIE_VILLAGER("zombie_villager", ZombieVillager.class, 27),
     ZOMBIFIED_PIGLIN("zombified_piglin", PigZombie.class, 57),
-    // Paper end - Generated/EntityType
+    // End generate - EntityType
     /**
      * An unknown entity without an Entity Class
      */

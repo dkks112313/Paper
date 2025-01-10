@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class MusicInstrument implements Keyed, net.kyori.adventure.translation.Translatable { // Paper - translation keys
 
-    // Paper start - Generated/MusicInstrument
+    // Start generate - MusicInstrument
     // @GeneratedFrom 1.21.4
     public static final MusicInstrument ADMIRE_GOAT_HORN = getInstrument("admire_goat_horn");
 
@@ -25,7 +25,7 @@ public abstract class MusicInstrument implements Keyed, net.kyori.adventure.tran
     public static final MusicInstrument SING_GOAT_HORN = getInstrument("sing_goat_horn");
 
     public static final MusicInstrument YEARN_GOAT_HORN = getInstrument("yearn_goat_horn");
-    // Paper end - Generated/MusicInstrument
+    // End generate - MusicInstrument
 
     /**
      * Returns a {@link MusicInstrument} by a {@link NamespacedKey}.

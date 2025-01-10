@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Attribute extends OldEnum<Attribute>, Keyed, Translatable, net.kyori.adventure.translation.Translatable { // Paper - Adventure translations
 
-    // Paper start - Generated/Attribute
+    // Start generate - Attribute
     // @GeneratedFrom 1.21.4
     Attribute ARMOR = getAttribute("armor");
 
@@ -81,7 +81,7 @@ public interface Attribute extends OldEnum<Attribute>, Keyed, Translatable, net.
     Attribute TEMPT_RANGE = getAttribute("tempt_range");
 
     Attribute WATER_MOVEMENT_EFFICIENCY = getAttribute("water_movement_efficiency");
-    // Paper end - Generated/Attribute
+    // End generate - Attribute
 
     @NotNull
     private static Attribute getAttribute(@NotNull String key) {

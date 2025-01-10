@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 @ApiStatus.Experimental
 public interface JukeboxSong extends Keyed, Translatable {
 
-    // Paper start - Generated/JukeboxSong
+    // Start generate - JukeboxSong
     // @GeneratedFrom 1.21.4
     JukeboxSong ELEVEN = get("11");
 
@@ -48,7 +48,7 @@ public interface JukeboxSong extends Keyed, Translatable {
     JukeboxSong WAIT = get("wait");
 
     JukeboxSong WARD = get("ward");
-    // Paper end - Generated/JukeboxSong
+    // End generate - JukeboxSong
 
     @NotNull
     private static JukeboxSong get(@NotNull String key) {

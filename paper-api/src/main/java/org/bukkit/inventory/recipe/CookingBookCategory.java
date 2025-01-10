@@ -5,10 +5,10 @@ package org.bukkit.inventory.recipe;
  */
 public enum CookingBookCategory {
 
-    // Paper start - Generated/CookingBookCategory
+    // Start generate - CookingBookCategory
     // @GeneratedFrom 1.21.4
     FOOD,
     BLOCKS,
     MISC;
-    // Paper end - Generated/CookingBookCategory
+    // End generate - CookingBookCategory
 }

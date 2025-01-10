@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
  * the Creative mode inventory
  */
 public enum PotionType implements Keyed, io.papermc.paper.world.flag.FeatureDependant { // Paper - feature flag API
-    // Paper start - Generated/PotionType
+    // Start generate - PotionType
     // @GeneratedFrom 1.21.4
     AWKWARD("awkward"),
     FIRE_RESISTANCE("fire_resistance"),
@@ -63,7 +63,7 @@ public enum PotionType implements Keyed, io.papermc.paper.world.flag.FeatureDepe
     WEAKNESS("weakness"),
     WEAVING("weaving"),
     WIND_CHARGED("wind_charged");
-    // Paper end - Generated/PotionType
+    // End generate - PotionType
 
     private final NamespacedKey key;
     private final Supplier<InternalPotionData> internalPotionDataSupplier;

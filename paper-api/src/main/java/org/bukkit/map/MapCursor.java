@@ -288,7 +288,7 @@ public final class MapCursor {
      */
     public interface Type extends OldEnum<Type>, Keyed {
 
-        // Paper start - Generated/MapCursorType
+        // Start generate - MapCursorType
         // @GeneratedFrom 1.21.4
         Type BANNER_BLACK = getType("banner_black");
 
@@ -359,7 +359,7 @@ public final class MapCursor {
         Type VILLAGE_SNOWY = getType("village_snowy");
 
         Type VILLAGE_TAIGA = getType("village_taiga");
-        // Paper end - Generated/MapCursorType
+        // End generate - MapCursorType
 
         @NotNull
         private static Type getType(@NotNull String key) {

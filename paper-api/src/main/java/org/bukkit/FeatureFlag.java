@@ -14,7 +14,7 @@ import org.jetbrains.annotations.ApiStatus;
  */
 public interface FeatureFlag extends Keyed {
 
-    // Paper start - Generated/FeatureFlag
+    // Start generate - FeatureFlag
     // @GeneratedFrom 1.21.4
     @ApiStatus.Experimental
     FeatureFlag MINECART_IMPROVEMENTS = create("minecart_improvements");
@@ -26,7 +26,7 @@ public interface FeatureFlag extends Keyed {
     FeatureFlag TRADE_REBALANCE = create("trade_rebalance");
 
     FeatureFlag VANILLA = create("vanilla");
-    // Paper end - Generated/FeatureFlag
+    // End generate - FeatureFlag
 
     /**
      * <strong>AVAILABLE BETWEEN VERSIONS:</strong> 1.19 - 1.19.4

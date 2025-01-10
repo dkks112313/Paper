@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Tag<T extends Keyed> extends Keyed {
 
-    // Paper start - Generated/Tag
+    // Start generate - Tag
     // @GeneratedFrom 1.21.4
     String REGISTRY_BLOCKS = "blocks";
 
@@ -832,7 +832,7 @@ public interface Tag<T extends Keyed> extends Keyed {
     Tag<GameEvent> GAME_EVENT_VIBRATIONS = Bukkit.getTag(REGISTRY_GAME_EVENTS, NamespacedKey.minecraft("vibrations"), GameEvent.class);
 
     Tag<GameEvent> GAME_EVENT_WARDEN_CAN_LISTEN = Bukkit.getTag(REGISTRY_GAME_EVENTS, NamespacedKey.minecraft("warden_can_listen"), GameEvent.class);
-    // Paper end - Generated/Tag
+    // End generate - Tag
 
     /**
      * @deprecated {@link #WOOL_CARPETS}.

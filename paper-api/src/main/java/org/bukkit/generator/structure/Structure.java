@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class Structure implements Keyed {
 
-    // Paper start - Generated/Structure
+    // Start generate - Structure
     // @GeneratedFrom 1.21.4
     public static final Structure ANCIENT_CITY = getStructure("ancient_city");
 
@@ -83,7 +83,7 @@ public abstract class Structure implements Keyed {
     public static final Structure VILLAGE_SNOWY = getStructure("village_snowy");
 
     public static final Structure VILLAGE_TAIGA = getStructure("village_taiga");
-    // Paper end - Generated/Structure
+    // End generate - Structure
 
     @NotNull
     private static Structure getStructure(@NotNull String name) {

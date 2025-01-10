@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionType;
 public class CraftPotionUtil {
 
     private static final BiMap<PotionType, PotionType> upgradeable = ImmutableBiMap.<PotionType, PotionType>builder()
-            // Paper start - Generated/CraftPotionUtil#upgradeable
+            // Start generate - CraftPotionUtil#upgradeable
             // @GeneratedFrom 1.21.4
             .put(PotionType.HARMING, PotionType.STRONG_HARMING)
             .put(PotionType.HEALING, PotionType.STRONG_HEALING)
@@ -25,10 +25,10 @@ public class CraftPotionUtil {
             .put(PotionType.STRENGTH, PotionType.STRONG_STRENGTH)
             .put(PotionType.SWIFTNESS, PotionType.STRONG_SWIFTNESS)
             .put(PotionType.TURTLE_MASTER, PotionType.STRONG_TURTLE_MASTER)
-            // Paper end - Generated/CraftPotionUtil#upgradeable
+            // End generate - CraftPotionUtil#upgradeable
             .build();
     private static final BiMap<PotionType, PotionType> extendable = ImmutableBiMap.<PotionType, PotionType>builder()
-            // Paper start - Generated/CraftPotionUtil#extendable
+            // Start generate - CraftPotionUtil#extendable
             // @GeneratedFrom 1.21.4
             .put(PotionType.FIRE_RESISTANCE, PotionType.LONG_FIRE_RESISTANCE)
             .put(PotionType.INVISIBILITY, PotionType.LONG_INVISIBILITY)
@@ -43,7 +43,7 @@ public class CraftPotionUtil {
             .put(PotionType.TURTLE_MASTER, PotionType.LONG_TURTLE_MASTER)
             .put(PotionType.WATER_BREATHING, PotionType.LONG_WATER_BREATHING)
             .put(PotionType.WEAKNESS, PotionType.LONG_WEAKNESS)
-            // Paper end - Generated/CraftPotionUtil#extendable
+            // End generate - CraftPotionUtil#extendable
             .build();
 
     public static PotionType fromBukkit(PotionData data) {

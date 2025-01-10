@@ -93,7 +93,7 @@ public interface Wolf extends Tameable, Sittable, io.papermc.paper.entity.Collar
      */
     interface Variant extends Keyed {
 
-        // Paper start - Generated/WolfVariant
+        // Start generate - WolfVariant
         // @GeneratedFrom 1.21.4
         Variant ASHEN = getVariant("ashen");
 
@@ -112,7 +112,7 @@ public interface Wolf extends Tameable, Sittable, io.papermc.paper.entity.Collar
         Variant STRIPED = getVariant("striped");
 
         Variant WOODS = getVariant("woods");
-        // Paper end - Generated/WolfVariant
+        // End generate - WolfVariant
 
         @NotNull
         private static Variant getVariant(@NotNull String key) {

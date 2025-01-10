@@ -183,7 +183,7 @@ public interface BlockType extends Keyed, Translatable, net.kyori.adventure.tran
     }
 
     //<editor-fold desc="BlockTypes" defaultstate="collapsed">
-    // Paper start - Generated/BlockType
+    // Start generate - BlockType
     // @GeneratedFrom 1.21.4
     BlockType.Typed<Switch> ACACIA_BUTTON = getBlockType("acacia_button");
 
@@ -2374,7 +2374,7 @@ public interface BlockType extends Keyed, Translatable, net.kyori.adventure.tran
     BlockType.Typed<Skull> ZOMBIE_HEAD = getBlockType("zombie_head");
 
     BlockType.Typed<WallSkull> ZOMBIE_WALL_HEAD = getBlockType("zombie_wall_head");
-    // Paper end - Generated/BlockType
+    // End generate - BlockType
     //</editor-fold>
 
     @NotNull

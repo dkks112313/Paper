@@ -35,7 +35,7 @@ public class MobGoalHelper {
         ignored.add("wrapped");
 
         //<editor-fold defaultstate="collapsed" desc="bukkitMap Entities">
-        // Paper start - Generated/MobGoalHelper#bukkitMap
+        // Start generate - MobGoalHelper#bukkitMap
         // @GeneratedFrom 1.21.4
         bukkitMap.put(net.minecraft.world.entity.Mob.class, Mob.class);
         bukkitMap.put(net.minecraft.world.entity.AgeableMob.class, Ageable.class);
@@ -143,7 +143,7 @@ public class MobGoalHelper {
         bukkitMap.put(net.minecraft.world.entity.monster.Bogged.class, Bogged.class);
         bukkitMap.put(net.minecraft.world.entity.monster.creaking.Creaking.class, Creaking.class);
         bukkitMap.put(net.minecraft.world.entity.animal.AgeableWaterCreature.class, Squid.class);
-        // Paper end - Generated/MobGoalHelper#bukkitMap
+        // End generate - MobGoalHelper#bukkitMap
         //</editor-fold>
     }
 

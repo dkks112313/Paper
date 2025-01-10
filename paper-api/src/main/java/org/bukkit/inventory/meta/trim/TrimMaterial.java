@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface TrimMaterial extends Keyed, Translatable {
 
-    // Paper start - Generated/TrimMaterial
+    // Start generate - TrimMaterial
     // @GeneratedFrom 1.21.4
     TrimMaterial AMETHYST = getTrimMaterial("amethyst");
 
@@ -35,7 +35,7 @@ public interface TrimMaterial extends Keyed, Translatable {
     TrimMaterial REDSTONE = getTrimMaterial("redstone");
 
     TrimMaterial RESIN = getTrimMaterial("resin");
-    // Paper end - Generated/TrimMaterial
+    // End generate - TrimMaterial
 
     @NotNull
     private static TrimMaterial getTrimMaterial(@NotNull String key) {

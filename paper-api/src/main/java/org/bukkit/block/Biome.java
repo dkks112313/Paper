@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Biome extends OldEnum<Biome>, Keyed, net.kyori.adventure.translation.Translatable { // Paper - Adventure translations
 
-    // Paper start - Generated/Biome
+    // Start generate - Biome
     // @GeneratedFrom 1.21.4
     Biome BADLANDS = getBiome("badlands");
 
@@ -153,7 +153,7 @@ public interface Biome extends OldEnum<Biome>, Keyed, net.kyori.adventure.transl
     Biome WINDSWEPT_SAVANNA = getBiome("windswept_savanna");
 
     Biome WOODED_BADLANDS = getBiome("wooded_badlands");
-    // Paper end - Generated/Biome
+    // End generate - Biome
 
     /**
      * Represents a custom Biome

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface TrimPattern extends Keyed, Translatable {
 
-    // Paper start - Generated/TrimPattern
+    // Start generate - TrimPattern
     // @GeneratedFrom 1.21.4
     TrimPattern BOLT = getTrimPattern("bolt");
 
@@ -49,7 +49,7 @@ public interface TrimPattern extends Keyed, Translatable {
     TrimPattern WAYFINDER = getTrimPattern("wayfinder");
 
     TrimPattern WILD = getTrimPattern("wild");
-    // Paper end - Generated/TrimPattern
+    // End generate - TrimPattern
 
     @NotNull
     private static TrimPattern getTrimPattern(@NotNull String key) {

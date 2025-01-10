@@ -351,7 +351,7 @@ public class CraftBlockData implements BlockData {
 
     static {
         //<editor-fold desc="CraftBlockData Registration" defaultstate="collapsed">
-        // Paper start - Generated/CraftBlockData#MAP
+        // Start generate - CraftBlockData#MAP
         // @GeneratedFrom 1.21.4
         register(net.minecraft.world.level.block.AmethystClusterBlock.class, org.bukkit.craftbukkit.block.impl.CraftAmethystCluster::new);
         register(net.minecraft.world.level.block.AnvilBlock.class, org.bukkit.craftbukkit.block.impl.CraftAnvil::new);
@@ -529,7 +529,7 @@ public class CraftBlockData implements BlockData {
         register(net.minecraft.world.level.block.piston.MovingPistonBlock.class, org.bukkit.craftbukkit.block.impl.CraftMovingPiston::new);
         register(net.minecraft.world.level.block.piston.PistonBaseBlock.class, org.bukkit.craftbukkit.block.impl.CraftPistonBase::new);
         register(net.minecraft.world.level.block.piston.PistonHeadBlock.class, org.bukkit.craftbukkit.block.impl.CraftPistonHead::new);
-        // Paper end - Generated/CraftBlockData#MAP
+        // End generate - CraftBlockData#MAP
         //</editor-fold>
     }
 

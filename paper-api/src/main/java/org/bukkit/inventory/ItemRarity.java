@@ -9,13 +9,13 @@ import net.kyori.adventure.text.format.TextColor;
  */
 public enum ItemRarity {
 
-    // Paper start - Generated/ItemRarity
+    // Start generate - ItemRarity
     // @GeneratedFrom 1.21.4
     COMMON(NamedTextColor.WHITE),
     UNCOMMON(NamedTextColor.YELLOW),
     RARE(NamedTextColor.AQUA),
     EPIC(NamedTextColor.LIGHT_PURPLE);
-    // Paper end - Generated/ItemRarity
+    // End generate - ItemRarity
 
     // Paper start - improve ItemRarity
     private final NamedTextColor color;

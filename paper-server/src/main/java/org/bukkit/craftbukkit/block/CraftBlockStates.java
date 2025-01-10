@@ -133,7 +133,7 @@ public final class CraftBlockStates {
     // Paper end
 
     static {
-        // Paper start - Generated/CraftBlockEntityStates
+        // Start generate - CraftBlockEntityStates
         // @GeneratedFrom 1.21.4
         register(BlockEntityType.BANNER, CraftBanner.class, CraftBanner::new);
         register(BlockEntityType.BARREL, CraftBarrel.class, CraftBarrel::new);
@@ -180,7 +180,7 @@ public final class CraftBlockStates {
         register(BlockEntityType.TRAPPED_CHEST, CraftChest.class, CraftChest::new);
         register(BlockEntityType.TRIAL_SPAWNER, CraftTrialSpawner.class, CraftTrialSpawner::new);
         register(BlockEntityType.VAULT, CraftVault.class, CraftVault::new);
-        // Paper end - Generated/CraftBlockEntityStates
+        // End generate - CraftBlockEntityStates
     }
 
     private static void register(Material blockType, BlockStateFactory<?> factory) {

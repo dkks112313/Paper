@@ -20,7 +20,7 @@ import org.bukkit.craftbukkit.inventory.CraftItemType;
 import org.bukkit.entity.EntityType;
 
 public enum CraftStatistic {
-    // Paper start - Generated/CraftStatisticCustom
+    // Start generate - CraftStatisticCustom
     // @GeneratedFrom 1.21.4
     ANIMALS_BRED(Stats.ANIMALS_BRED),
     AVIATE_ONE_CM(Stats.AVIATE_ONE_CM),
@@ -97,8 +97,8 @@ public enum CraftStatistic {
     WALK_ON_WATER_ONE_CM(Stats.WALK_ON_WATER_ONE_CM),
     WALK_ONE_CM(Stats.WALK_ONE_CM),
     WALK_UNDER_WATER_ONE_CM(Stats.WALK_UNDER_WATER_ONE_CM),
-    // Paper end - Generated/CraftStatisticCustom
-    // Paper start - Generated/CraftStatisticType
+    // End generate - CraftStatisticCustom
+    // Start generate - CraftStatisticType
     // @GeneratedFrom 1.21.4
     BREAK_ITEM(ResourceLocation.withDefaultNamespace("broken")),
     CRAFT_ITEM(ResourceLocation.withDefaultNamespace("crafted")),
@@ -108,7 +108,7 @@ public enum CraftStatistic {
     MINE_BLOCK(ResourceLocation.withDefaultNamespace("mined")),
     PICKUP(ResourceLocation.withDefaultNamespace("picked_up")),
     USE_ITEM(ResourceLocation.withDefaultNamespace("used"));
-    // Paper end - Generated/CraftStatisticType
+    // End generate - CraftStatisticType
     private final ResourceLocation minecraftKey;
     private final org.bukkit.Statistic bukkit;
     private static final BiMap<ResourceLocation, org.bukkit.Statistic> statistics;

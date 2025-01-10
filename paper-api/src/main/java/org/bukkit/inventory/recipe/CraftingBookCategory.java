@@ -5,11 +5,11 @@ package org.bukkit.inventory.recipe;
  */
 public enum CraftingBookCategory {
 
-    // Paper start - Generated/CraftingBookCategory
+    // Start generate - CraftingBookCategory
     // @GeneratedFrom 1.21.4
     BUILDING,
     REDSTONE,
     EQUIPMENT,
     MISC;
-    // Paper end - Generated/CraftingBookCategory
+    // End generate - CraftingBookCategory
 }

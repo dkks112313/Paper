@@ -27,9 +27,7 @@ import org.jspecify.annotations.Nullable;
 @NullMarked
 public class PaperPatternSourceSetRewriter extends SourceSetRewriterImpl<PatternSourceSetRewriter> implements PatternSourceSetRewriter {
 
-    private static final String PAPER_START_FORMAT = "Paper start"; // todo rename, "Paper" is not needed anymore here
-    private static final String PAPER_END_FORMAT = "Paper end";
-    private static final String COMMENT_MARKER_FORMAT = "%s - Generated/%s"; // {0} = PAPER_START_FORMAT|PAPER_END_FORMAT {1} = pattern
+    private static final String COMMENT_MARKER_FORMAT = "%s generate - %s"; // {0} = Start|End {1} = pattern
     private static final IndentUnit INDENT_UNIT = IndentUnit.parse(SimpleGenerator.INDENT_UNIT);
 
     public PaperPatternSourceSetRewriter() {
@@ -51,8 +49,8 @@ public class PaperPatternSourceSetRewriter extends SourceSetRewriterImpl<Pattern
 
     private static ReplaceOptionsLike getOptions(String pattern, @Nullable ClassNamed targetClass) {
         return ReplaceOptions.between(
-                COMMENT_MARKER_FORMAT.formatted(PAPER_START_FORMAT, pattern),
-                COMMENT_MARKER_FORMAT.formatted(PAPER_END_FORMAT, pattern)
+                COMMENT_MARKER_FORMAT.formatted("Start", pattern),
+                COMMENT_MARKER_FORMAT.formatted("End", pattern)
             )
             .generatedComment(Annotations.annotationStyle(GeneratedFrom.class) + " " + SharedConstants.getCurrentVersion().getName())
             .targetClass(targetClass);

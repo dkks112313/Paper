@@ -36,7 +36,7 @@ public final class MapPalette {
 
     @NotNull
     static final Color[] colors = {
-        // Paper start - Generated/MapPalette#colors
+        // Start generate - MapPalette#colors
         // @GeneratedFrom 1.21.4
         new Color(0x00000000, true),
         new Color(0x00000000, true),
@@ -286,7 +286,7 @@ public final class MapPalette {
         new Color(0x6D9081),
         new Color(0x7FA796),
         new Color(0x43584F),
-        // Paper end - Generated/MapPalette#colors
+        // End generate - MapPalette#colors
     };
 
     // Interface

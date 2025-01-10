@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 public interface PatternType extends OldEnum<PatternType>, Keyed {
 
-    // Paper start - Generated/PatternType
+    // Start generate - PatternType
     // @GeneratedFrom 1.21.4
     PatternType BASE = getType("base");
 
@@ -100,7 +100,7 @@ public interface PatternType extends OldEnum<PatternType>, Keyed {
     PatternType TRIANGLES_BOTTOM = getType("triangles_bottom");
 
     PatternType TRIANGLES_TOP = getType("triangles_top");
-    // Paper end - Generated/PatternType
+    // End generate - PatternType
 
     // Paper start - deprecate getKey
     /**

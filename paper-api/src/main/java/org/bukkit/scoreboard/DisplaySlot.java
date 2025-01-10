@@ -4,7 +4,7 @@ package org.bukkit.scoreboard;
  * Locations for displaying objectives to the player
  */
 public enum DisplaySlot {
-    // Paper start - Generated/DisplaySlot
+    // Start generate - DisplaySlot
     // @GeneratedFrom 1.21.4
     PLAYER_LIST("list"),
     SIDEBAR("sidebar"),
@@ -25,7 +25,7 @@ public enum DisplaySlot {
     SIDEBAR_TEAM_LIGHT_PURPLE("sidebar.team.light_purple"),
     SIDEBAR_TEAM_YELLOW("sidebar.team.yellow"),
     SIDEBAR_TEAM_WHITE("sidebar.team.white");
-    // Paper end - Generated/DisplaySlot
+    // End generate - DisplaySlot
 
     public static final net.kyori.adventure.util.Index<String, DisplaySlot> NAMES = net.kyori.adventure.util.Index.create(DisplaySlot.class, DisplaySlot::getId);
 

@@ -34,7 +34,7 @@ public interface Art extends OldEnum<Art>, Keyed {
         return InlinedRegistryBuilderProvider.instance().createPaintingVariant(value);
     }
 
-    // Paper start - Generated/Art
+    // Start generate - Art
     // @GeneratedFrom 1.21.4
     Art ALBAN = getArt("alban");
 
@@ -135,7 +135,7 @@ public interface Art extends OldEnum<Art>, Keyed {
     Art WIND = getArt("wind");
 
     Art WITHER = getArt("wither");
-    // Paper end - Generated/Art
+    // End generate - Art
 
     @NotNull
     private static Art getArt(@NotNull String key) {

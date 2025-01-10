@@ -138,7 +138,7 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings({"DeprecatedIsStillUsed", "deprecation"}) // Paper
 public enum Material implements Keyed, Translatable, net.kyori.adventure.translation.Translatable { // Paper
     //<editor-fold desc="Materials" defaultstate="collapsed">
-    // Paper start - Generated/Items
+    // Start generate - Items
     // @GeneratedFrom 1.21.4
     ACACIA_BOAT(-1, 1),
     ACACIA_CHEST_BOAT(-1, 1),
@@ -583,8 +583,8 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
     ZOMBIE_SPAWN_EGG(-1),
     ZOMBIE_VILLAGER_SPAWN_EGG(-1),
     ZOMBIFIED_PIGLIN_SPAWN_EGG(-1),
-    // Paper end - Generated/Items
-    // Paper start - Generated/Blocks
+    // End generate - Items
+    // Start generate - Blocks
     // @GeneratedFrom 1.21.4
     ACACIA_BUTTON(-1, Switch.class),
     ACACIA_DOOR(-1, Door.class),
@@ -1680,7 +1680,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
     YELLOW_WOOL(-1),
     ZOMBIE_HEAD(-1, Skull.class),
     ZOMBIE_WALL_HEAD(-1, WallSkull.class),
-    // Paper end - Generated/Blocks
+    // End generate - Blocks
     // ----- Legacy Separator -----
     @Deprecated(since = "1.13")
     LEGACY_AIR(0, 0),
@@ -3041,7 +3041,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
         }
         switch (this) {
             //<editor-fold defaultstate="collapsed" desc="isTransparent">
-            // Paper start - Generated/Material#isTransparent
+            // Start generate - Material#isTransparent
             case ACACIA_BUTTON:
             case ACACIA_SAPLING:
             case ACTIVATOR_RAIL:
@@ -3169,7 +3169,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
             case YELLOW_CARPET:
             case ZOMBIE_HEAD:
             case ZOMBIE_WALL_HEAD:
-            // Paper end - Generated/Material#isTransparent
+            // End generate - Material#isTransparent
             // ----- Legacy Separator -----
             case LEGACY_AIR:
             case LEGACY_SAPLING:
@@ -3400,7 +3400,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
         Preconditions.checkArgument(isItem(), "The Material is not an item!");
         switch (this) {
             // <editor-fold defaultstate="collapsed" desc="getEquipmentSlot">
-            // Paper start - Generated/Material#getEquipmentSlot
+            // Start generate - Material#getEquipmentSlot
             // @GeneratedFrom 1.21.4
             case BLACK_CARPET:
             case BLUE_CARPET:
@@ -3466,7 +3466,7 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
                 return EquipmentSlot.OFF_HAND;
             default:
                 return EquipmentSlot.HAND;
-            // Paper end - Generated/Material#getEquipmentSlot
+            // End generate - Material#getEquipmentSlot
             // </editor-fold>
         }
     }

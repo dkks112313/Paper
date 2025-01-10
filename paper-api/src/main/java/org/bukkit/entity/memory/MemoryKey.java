@@ -46,7 +46,7 @@ public final class MemoryKey<T> implements Keyed {
 
     private static final Map<NamespacedKey, MemoryKey<?>> MEMORY_KEYS = new HashMap<>();
 
-    // Paper start - Generated/MemoryKey
+    // Start generate - MemoryKey
     // @GeneratedFrom 1.21.4
     public static final MemoryKey<Boolean> ADMIRING_DISABLED = new MemoryKey<>(NamespacedKey.minecraft("admiring_disabled"), Boolean.class);
 
@@ -127,7 +127,7 @@ public final class MemoryKey<T> implements Keyed {
     public static final MemoryKey<Integer> VISIBLE_ADULT_HOGLIN_COUNT = new MemoryKey<>(NamespacedKey.minecraft("visible_adult_hoglin_count"), Integer.class);
 
     public static final MemoryKey<Integer> VISIBLE_ADULT_PIGLIN_COUNT = new MemoryKey<>(NamespacedKey.minecraft("visible_adult_piglin_count"), Integer.class);
-    // Paper end - Generated/MemoryKey
+    // End generate - MemoryKey
     /**
      * @deprecated this constant uses the wrong generic type, the sniffer now stores different positions
      * from possibly different worlds. Use the relevant methods in {@link org.bukkit.entity.Sniffer} directly

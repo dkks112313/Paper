@@ -89,7 +89,7 @@ public interface ItemType extends Keyed, Translatable, net.kyori.adventure.trans
     }
 
     //<editor-fold desc="ItemTypes" defaultstate="collapsed">
-    // Paper start - Generated/ItemType
+    // Start generate - ItemType
     // @GeneratedFrom 1.21.4
     ItemType.Typed<ItemMeta> ACACIA_BOAT = getItemType("acacia_boat");
 
@@ -2860,7 +2860,7 @@ public interface ItemType extends Keyed, Translatable, net.kyori.adventure.trans
     ItemType.Typed<ItemMeta> ZOMBIE_VILLAGER_SPAWN_EGG = getItemType("zombie_villager_spawn_egg");
 
     ItemType.Typed<ItemMeta> ZOMBIFIED_PIGLIN_SPAWN_EGG = getItemType("zombified_piglin_spawn_egg");
-    // Paper end - Generated/ItemType
+    // End generate - ItemType
     //</editor-fold>
 
     @NotNull

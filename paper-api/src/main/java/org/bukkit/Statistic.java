@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
  * Represents a countable statistic, which is tracked by the server.
  */
 public enum Statistic implements Keyed {
-    // Paper start - Generated/StatisticCustom
+    // Start generate - StatisticCustom
     // @GeneratedFrom 1.21.4
     ANIMALS_BRED,
     AVIATE_ONE_CM,
@@ -84,8 +84,8 @@ public enum Statistic implements Keyed {
     WALK_ON_WATER_ONE_CM,
     WALK_ONE_CM,
     WALK_UNDER_WATER_ONE_CM,
-    // Paper end - Generated/StatisticCustom
-    // Paper start - Generated/StatisticType
+    // End generate - StatisticCustom
+    // Start generate - StatisticType
     // @GeneratedFrom 1.21.4
     BREAK_ITEM(Type.ITEM),
     CRAFT_ITEM(Type.ITEM),
@@ -95,7 +95,7 @@ public enum Statistic implements Keyed {
     MINE_BLOCK(Type.BLOCK),
     PICKUP(Type.ITEM),
     USE_ITEM(Type.ITEM);
-    // Paper end - Generated/StatisticType
+    // End generate - StatisticType
 
     private final Type type;
     private final NamespacedKey key;

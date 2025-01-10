@@ -50,14 +50,14 @@ public interface Frog extends Animals {
      */
     interface Variant extends OldEnum<Variant>, Keyed {
 
-        // Paper start - Generated/FrogVariant
+        // Start generate - FrogVariant
         // @GeneratedFrom 1.21.4
         Variant COLD = getVariant("cold");
 
         Variant TEMPERATE = getVariant("temperate");
 
         Variant WARM = getVariant("warm");
-        // Paper end - Generated/FrogVariant
+        // End generate - FrogVariant
 
         @NotNull
         private static Variant getVariant(@NotNull String key) {

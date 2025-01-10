@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @ApiStatus.Experimental
 public final class DamageTypeTags {
 
-    // Paper start - Generated/DamageTypeTags
+    // Start generate - DamageTypeTags
     // @GeneratedFrom 1.21.4
     public static final Tag<DamageType> ALWAYS_HURTS_ENDER_DRAGONS = getTag("always_hurts_ender_dragons");
 
@@ -80,7 +80,7 @@ public final class DamageTypeTags {
     public static final Tag<DamageType> WITCH_RESISTANT_TO = getTag("witch_resistant_to");
 
     public static final Tag<DamageType> WITHER_IMMUNE_TO = getTag("wither_immune_to");
-    // Paper end - Generated/DamageTypeTags
+    // End generate - DamageTypeTags
     /**
      * Internal use only.
      */

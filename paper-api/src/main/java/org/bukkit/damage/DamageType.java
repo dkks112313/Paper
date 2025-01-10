@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 @ApiStatus.Experimental
 public interface DamageType extends Keyed, Translatable {
 
-    // Paper start - Generated/DamageType
+    // Start generate - DamageType
     // @GeneratedFrom 1.21.4
     DamageType ARROW = getDamageType("arrow");
 
@@ -118,7 +118,7 @@ public interface DamageType extends Keyed, Translatable {
     DamageType WITHER = getDamageType("wither");
 
     DamageType WITHER_SKULL = getDamageType("wither_skull");
-    // Paper end - Generated/DamageType
+    // End generate - DamageType
 
     @NotNull
     private static DamageType getDamageType(@NotNull String key) {
