@@ -1,5 +1,6 @@
 package io.papermc.generator.rewriter.types.registry;
 
+import com.google.common.base.Preconditions;
 import com.mojang.logging.LogUtils;
 import io.papermc.generator.Main;
 import io.papermc.generator.rewriter.utils.Annotations;
@@ -42,13 +43,12 @@ public class RegistryTagRewriter<T> extends SearchReplaceRewriter {
     @Override
     public boolean registerFor(SourceFile file) {
         ClassNamed holderClass = this.options.targetClass().orElse(file.mainClass());
-        if (holderClass.knownClass() != null) {
-            try {
-                holderClass.knownClass().getDeclaredMethod(this.fetchMethod, String.class);
-            } catch (NoSuchMethodException e) {
-                LOGGER.error("Fetch method not found, skipping the rewriter for registry tag fields of {}", this.registryKey, e);
-                return false;
-            }
+        Preconditions.checkState(holderClass.knownClass() != null, "This rewriter can't run without knowing the field class at runtime!");
+        try {
+            holderClass.knownClass().getDeclaredMethod(this.fetchMethod, String.class);
+        } catch (NoSuchMethodException e) {
+            LOGGER.error("Fetch method not found, skipping the rewriter for registry tag fields of {}", this.registryKey, e);
+            return false;
         }
 
         return super.registerFor(file);

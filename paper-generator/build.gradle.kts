@@ -13,6 +13,11 @@ repositories {
     mavenLocal() // todo publish typewriter somewhere
 }
 
+val serverRuntimeClasspath by configurations.registering { // resolvable?
+    isCanBeConsumed = false
+    isCanBeResolved = true
+}
+
 dependencies {
     minecraftJar(project(":paper-server", "mappedJarOutgoing"))
     implementation(project(":paper-server", "macheMinecraftLibraries"))
@@ -26,6 +31,8 @@ dependencies {
     implementation("org.jetbrains:annotations:26.0.1")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    serverRuntimeClasspath(project(":paper-server", "runtimeConfiguration"))
 }
 
 val gameVersion = providers.gradleProperty("mcVersion")
@@ -40,6 +47,7 @@ val rewriteImpl = tasks.registerGenerationTask("rewriteImpl", true, "paper-serve
     description = "Rewrite existing implementation classes"
     mainClass.set("io.papermc.generator.Main\$Rewriter")
     classpath(sourceSets.main.map { it.runtimeClasspath })
+    args(serverRuntimeClasspath.get().asPath)
 }
 
 tasks.register("rewrite") {
@@ -104,7 +112,6 @@ fun TaskContainer.registerGenerationTask(
         args(projectDirs)
         systemProperty("paper.updatingMinecraft", providers.gradleProperty("updatingMinecraft").getOrElse("false").toBoolean())
         if (rewrite) {
-            systemProperty("typewriter.lexer.ignoreMarkdownDocComments", true)
             inputs.files(projectDirs.map { it.resolve("src/main/java") })
             outputs.dirs(projectDirs.map { it.resolve("src/main/java") })
         } else {

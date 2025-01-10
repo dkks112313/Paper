@@ -9,6 +9,7 @@ import io.papermc.generator.utils.experimental.ExperimentalCollector;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -76,7 +77,7 @@ public class Main {
 
         public static void main(String[] args) {
             boolean isApi = args[0].endsWith("-api");
-            PatternSourceSetRewriter sourceSet = new PaperPatternSourceSetRewriter();
+            PatternSourceSetRewriter sourceSet = args.length >= 2 ? PaperPatternSourceSetRewriter.from(args[1]) : new PaperPatternSourceSetRewriter();
             (isApi ? Rewriters.API : Rewriters.SERVER).accept(sourceSet);
             try {
                 sourceSet.apply(Path.of(args[0], "src/main/java"));

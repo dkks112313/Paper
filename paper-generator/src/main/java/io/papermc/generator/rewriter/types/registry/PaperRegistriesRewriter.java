@@ -37,7 +37,7 @@ public class PaperRegistriesRewriter extends SearchReplaceRewriter {
             builder.append(this.importCollector.getShortName(entry.preloadClass())).append(".class");
             builder.append(", ");
 
-            builder.append(this.importCollector.getShortName(this.classNamedView.findFirst(entry.implClass()))).append("::").append(entry.apiAccessName().equals(ConstantDescs.INIT_NAME) ? "new" : entry.apiAccessName());
+            builder.append(this.importCollector.getShortName(this.classNamedView.findFirst(entry.implClass()).resolve(this.classResolver))).append("::").append(entry.apiAccessName().equals(ConstantDescs.INIT_NAME) ? "new" : entry.apiAccessName());
             builder.append(')');
 
             if (entry.fieldRename() != null) {
@@ -46,7 +46,7 @@ public class PaperRegistriesRewriter extends SearchReplaceRewriter {
 
             if (entry.apiRegistryBuilderImpl() != null) {
                 builder.append(".writable(");
-                builder.append(this.importCollector.getShortName(this.classNamedView.findFirst(entry.apiRegistryBuilderImpl()))).append("::new");
+                builder.append(this.importCollector.getShortName(this.classNamedView.findFirst(entry.apiRegistryBuilderImpl()).resolve(this.classResolver))).append("::new");
                 builder.append(')');
             } else {
                 builder.append(".build()");

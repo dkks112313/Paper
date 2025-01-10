@@ -12,7 +12,12 @@ import io.papermc.typewriter.replace.CompositeRewriter;
 import io.papermc.typewriter.replace.ReplaceOptions;
 import io.papermc.typewriter.replace.ReplaceOptionsLike;
 import io.papermc.typewriter.replace.SearchReplaceRewriter;
+import java.io.File;
+import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
 import net.minecraft.SharedConstants;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.VisibleForTesting;
@@ -28,7 +33,15 @@ public class PaperPatternSourceSetRewriter extends SourceSetRewriterImpl<Pattern
     private static final IndentUnit INDENT_UNIT = IndentUnit.parse(SimpleGenerator.INDENT_UNIT);
 
     public PaperPatternSourceSetRewriter() {
-        super(SourcesMetadata.of(INDENT_UNIT));
+        this(Collections.emptySet());
+    }
+
+    public PaperPatternSourceSetRewriter(Set<Path> classpath) {
+        super(SourcesMetadata.of(INDENT_UNIT, b -> b.classpath(classpath))); // let the runtime java version since it will always be in sync with what paperweight use
+    }
+
+    public static PaperPatternSourceSetRewriter from(String classpath) {
+        return new PaperPatternSourceSetRewriter(Arrays.stream(classpath.split(File.pathSeparator)).map(Path::of).collect(Collectors.toSet()));
     }
 
     @VisibleForTesting

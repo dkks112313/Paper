@@ -1,11 +1,14 @@
 package io.papermc.generator.rewriter.types.simple;
 
 import com.google.common.base.CaseFormat;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import io.papermc.generator.registry.RegistryEntries;
 import io.papermc.generator.rewriter.types.registry.EnumRegistryRewriter;
 import io.papermc.generator.types.goal.MobGoalNames;
+import io.papermc.typewriter.ClassNamed;
 import io.papermc.typewriter.preset.model.EnumValue;
+import io.papermc.typewriter.util.ClassResolver;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.lang.reflect.ParameterizedType;
@@ -139,6 +142,8 @@ public class EntityTypeRewriter extends EnumRegistryRewriter<EntityType<?>> {
         map.put(EntityType.END_CRYSTAL, 200);
     });
 
+    private static final ClassResolver runtime = new ClassResolver(EntityTypeRewriter.class.getClassLoader());
+
     public EntityTypeRewriter() {
         super(Registries.ENTITY_TYPE, false);
     }
@@ -164,6 +169,8 @@ public class EntityTypeRewriter extends EnumRegistryRewriter<EntityType<?>> {
         }
 
         String className = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, reference.key().location().getPath()); // use the key instead of the internal class name since name match a bit more
-        return this.importCollector.getShortName(this.classNamedView.findFirst(CLASS_RENAMES.getOrDefault(className, className)));
+        ClassNamed resolvedClass = this.classNamedView.findFirst(CLASS_RENAMES.getOrDefault(className, className)).resolve(runtime);
+        Preconditions.checkArgument(org.bukkit.entity.Entity.class.isAssignableFrom(resolvedClass.knownClass()), "Generic type must be an entity");
+        return this.importCollector.getShortName(this.classNamedView.findFirst(CLASS_RENAMES.getOrDefault(className, className)).resolve(runtime));
     }
 }
