@@ -139,8 +139,7 @@ public final class Rewriters {
                 holder("Blocks", new MaterialRewriter.Blocks()),
                 //holder("Material#isTransparent", MaterialRewriter.IsTransparent()),
 
-                holder("Items", new MaterialRewriter.Items()),
-                holder("Material#getEquipmentSlot", new MaterialRewriter.GetEquipmentSlot())
+                holder("Items", new MaterialRewriter.Items())
             ))
             .register(Statistic.class, composite(
                 holder("StatisticCustom", new StatisticRewriter.Custom()),

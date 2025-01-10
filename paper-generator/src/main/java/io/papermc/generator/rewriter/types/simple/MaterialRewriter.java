@@ -3,26 +3,16 @@ package io.papermc.generator.rewriter.types.simple;
 import io.papermc.generator.rewriter.types.registry.EnumRegistryRewriter;
 import io.papermc.generator.utils.BlockStateMapping;
 import io.papermc.generator.utils.Formatting;
-import io.papermc.typewriter.preset.SwitchRewriter;
-import io.papermc.typewriter.preset.model.CodeBlock;
 import io.papermc.typewriter.preset.model.EnumValue;
-import io.papermc.typewriter.preset.model.SwitchCases;
-import io.papermc.typewriter.preset.model.SwitchContent;
-import java.util.Comparator;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.SortedMap;
-import java.util.TreeMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallSignBlock;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.inventory.EquipmentSlot;
 
 import static io.papermc.generator.utils.Formatting.asCode;
 
@@ -116,33 +106,6 @@ public class MaterialRewriter {
             }
 
             return value.argument(Integer.toString(-1)); // id not needed for non legacy material
-        }
-    }
-
-    public static class GetEquipmentSlot extends SwitchRewriter {
-
-        @Override
-        protected SwitchContent getContent() {
-            SortedMap<net.minecraft.world.entity.EquipmentSlot, SwitchCases.SwitchCasesChain> cases = new TreeMap<>(
-                Comparator.comparing(Enum::ordinal, (i1, i2) -> Integer.compare(i2, i1)) // reversed (BODY -> HAND)
-            );
-
-            net.minecraft.world.entity.EquipmentSlot defaultValue = net.minecraft.world.entity.EquipmentSlot.MAINHAND;
-            CodeBlock defaultBlock = CodeBlock.of("return " + asCode(EquipmentSlot.HAND) + ";");
-
-            BuiltInRegistries.ITEM.listElements().forEach(reference -> {
-                Equippable equippable = reference.value().components().get(DataComponents.EQUIPPABLE);
-                net.minecraft.world.entity.EquipmentSlot slot = equippable == null ? defaultValue : equippable.slot();
-                if (slot != defaultValue) {
-                    cases.computeIfAbsent(slot, key -> {
-                        return SwitchCases.chain()
-                            .sortValues(Formatting.ALPHABETIC_KEY_ORDER)
-                            .enclosingContent(CodeBlock.of("return " + asCode(EquipmentSlot.values()[slot.ordinal()]) + ";"));
-                    }).add(reference.key().location().getPath().toUpperCase(Locale.ENGLISH));
-                }
-            });
-
-            return SwitchContent.of(cases.values().stream().map(SwitchCases.SwitchCasesChain::build).toList()).withDefault(defaultBlock);
         }
     }
 }

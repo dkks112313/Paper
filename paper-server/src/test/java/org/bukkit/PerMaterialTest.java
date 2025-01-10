@@ -5,14 +5,9 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.equipment.Equippable;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.CraftEquipmentSlot;
-import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.craftbukkit.util.CraftMagicNumbers;
 import org.bukkit.enchantments.EnchantmentTarget;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
 import org.bukkit.support.environment.AllFeatures;
 import org.junit.jupiter.api.Disabled;
@@ -50,16 +45,6 @@ public class PerMaterialTest {
     public void testBlockDataCreation(Material material) {
         if (material.isBlock()) {
             assertNotNull(material.createBlockData());
-        }
-    }
-
-    @ParameterizedTest
-    @EnumSource(value = Material.class, names = "LEGACY_.*", mode = EnumSource.Mode.MATCH_NONE)
-    public void testEquipmentSlot(Material material) {
-        if (material.isItem()) {
-            Equippable equipable = CraftItemStack.asNMSCopy(new ItemStack(material)).get(DataComponents.EQUIPPABLE);
-            EquipmentSlot expected = CraftEquipmentSlot.getSlot(equipable != null ? equipable.slot() : net.minecraft.world.entity.EquipmentSlot.MAINHAND);
-            assertThat(material.getEquipmentSlot(), is(expected));
         }
     }
 

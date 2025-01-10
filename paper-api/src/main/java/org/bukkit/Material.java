@@ -9,6 +9,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
+import io.papermc.paper.datacomponent.item.Equippable;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.block.Block;
@@ -3397,78 +3399,10 @@ public enum Material implements Keyed, Translatable, net.kyori.adventure.transla
      */
     @NotNull
     public EquipmentSlot getEquipmentSlot() {
-        Preconditions.checkArgument(isItem(), "The Material is not an item!");
-        switch (this) {
-            // <editor-fold defaultstate="collapsed" desc="getEquipmentSlot">
-            // Start generate - Material#getEquipmentSlot
-            // @GeneratedFrom 1.21.4
-            case BLACK_CARPET:
-            case BLUE_CARPET:
-            case BROWN_CARPET:
-            case CYAN_CARPET:
-            case DIAMOND_HORSE_ARMOR:
-            case GOLDEN_HORSE_ARMOR:
-            case GRAY_CARPET:
-            case GREEN_CARPET:
-            case IRON_HORSE_ARMOR:
-            case LEATHER_HORSE_ARMOR:
-            case LIGHT_BLUE_CARPET:
-            case LIGHT_GRAY_CARPET:
-            case LIME_CARPET:
-            case MAGENTA_CARPET:
-            case ORANGE_CARPET:
-            case PINK_CARPET:
-            case PURPLE_CARPET:
-            case RED_CARPET:
-            case WHITE_CARPET:
-            case WOLF_ARMOR:
-            case YELLOW_CARPET:
-                return EquipmentSlot.BODY;
-            case CARVED_PUMPKIN:
-            case CHAINMAIL_HELMET:
-            case CREEPER_HEAD:
-            case DIAMOND_HELMET:
-            case DRAGON_HEAD:
-            case GOLDEN_HELMET:
-            case IRON_HELMET:
-            case LEATHER_HELMET:
-            case NETHERITE_HELMET:
-            case PIGLIN_HEAD:
-            case PLAYER_HEAD:
-            case SKELETON_SKULL:
-            case TURTLE_HELMET:
-            case WITHER_SKELETON_SKULL:
-            case ZOMBIE_HEAD:
-                return EquipmentSlot.HEAD;
-            case CHAINMAIL_CHESTPLATE:
-            case DIAMOND_CHESTPLATE:
-            case ELYTRA:
-            case GOLDEN_CHESTPLATE:
-            case IRON_CHESTPLATE:
-            case LEATHER_CHESTPLATE:
-            case NETHERITE_CHESTPLATE:
-                return EquipmentSlot.CHEST;
-            case CHAINMAIL_LEGGINGS:
-            case DIAMOND_LEGGINGS:
-            case GOLDEN_LEGGINGS:
-            case IRON_LEGGINGS:
-            case LEATHER_LEGGINGS:
-            case NETHERITE_LEGGINGS:
-                return EquipmentSlot.LEGS;
-            case CHAINMAIL_BOOTS:
-            case DIAMOND_BOOTS:
-            case GOLDEN_BOOTS:
-            case IRON_BOOTS:
-            case LEATHER_BOOTS:
-            case NETHERITE_BOOTS:
-                return EquipmentSlot.FEET;
-            case SHIELD:
-                return EquipmentSlot.OFF_HAND;
-            default:
-                return EquipmentSlot.HAND;
-            // End generate - Material#getEquipmentSlot
-            // </editor-fold>
-        }
+        ItemType type = asItemType();
+        Preconditions.checkArgument(type != null, "The Material is not an item!");
+        Equippable equippable = type.getDefaultData(DataComponentTypes.EQUIPPABLE);
+        return equippable == null ? EquipmentSlot.HAND : equippable.slot();
     }
 
     // Paper start - improve default item attribute API

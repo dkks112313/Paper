@@ -35,6 +35,7 @@ public class VillagerProfessionRewriter extends RegistryFieldRewriter<VillagerPr
         Map<String, CharSequenceBlockToken> map = new HashMap<>();
 
         Lexer lex = new Lexer(content.toCharArray());
+        lex.checkMarkdownDocComments = this.sourcesMetadata.canSkipMarkdownDocComments();
         SequenceTokens.wrap(lex, FORMAT_TOKENS)
             .group(action -> {
                 ProtoConstant constant = new ProtoConstant();
